@@ -45,7 +45,7 @@ public class Date
             annee=Clavier.readInt();
             Date date = new Date(jour,mois,annee);
            
-            if(arg[0].equals("-anglais")){
+            if(arg.length != 0 && arg[0].equals("-anglais")){
                 System.out.println("The date is : " + date.toStringE() );
             }else{
                 System.out.println("La date est : " + date );
