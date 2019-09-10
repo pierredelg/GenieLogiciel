@@ -2,30 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="694341e9-2b05-467f-a1eb-6fdd00b48efc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/TP2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._Eratosthene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._EratostheneRapide.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._Filtre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._FiltreRapide.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._Generateur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._GenerateurRapide.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._comparaison.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._comparer.R" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._test.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/Eratosthene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/EratostheneRapide.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/Filtre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/FiltreRapide.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/Generateur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/GenerateurRapide.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/comparaison.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/comparer.R" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fichiers-tp2/test.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AlgoEratostene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Eratosthene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Filtre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Generateur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,6 +34,11 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -66,7 +51,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Eratosthene">
     <configuration name="AlgoEratostene" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AlgoEratostene" />
       <module name="TP2" />
@@ -74,8 +59,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Eratosthene" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Eratosthene" />
+      <module name="TP2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Eratosthene" />
         <item itemvalue="Application.AlgoEratostene" />
       </list>
     </recent_temporary>
@@ -90,8 +83,30 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568120528851</updated>
-      <workItem from="1568120529984" duration="1676000" />
+      <workItem from="1568120529984" duration="4696000" />
     </task>
+    <task id="LOCAL-00001" summary="ajout ex1 tp2">
+      <created>1568122220850</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1568122220850</updated>
+    </task>
+    <task id="LOCAL-00002" summary="ajout ex1 tp2">
+      <created>1568122248937</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1568122248937</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ajout ex1 tp2">
+      <created>1568122264725</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1568122264725</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,5 +122,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ajout ex1 tp2" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout ex1 tp2" />
   </component>
 </project>
