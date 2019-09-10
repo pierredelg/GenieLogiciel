@@ -1,39 +1,46 @@
 /**
- * La Structure Filtre forme une liste chainée de Filtre
+ * Un filtre de valeur p "élimine" tous les nombres multiples de p (cf. filtrer)
  */
 public class Filtre {
 
-    private int multiple;
+    // valeur filtrante
+    private int valeur ;
+    // filtre suivant
+    private Filtre suivant = null ;
 
-    private Filtre filtreSuivant;
-
-    private String result = "";
+    /** 
+     * crée un filtre de valeur filtrante n
+     */
+    public Filtre(int n) {valeur = n ;}
     
-    Filtre(int i) {
-        this.multiple = i;
+    /** 
+     * indique si le filtre est le dernier de la liste
+     */
+    public boolean estDernier() { return suivant == null ; }
+    /**
+     * affiche la valeur filtrante du filtre et, s'il n'est pas le dernier,
+     * la valeur des autres filtres
+     */
+    public String toString() 
+    { 
+	String s = "\t" + valeur ;
+	if (!estDernier()) s += suivant ;
+	return s ; 
     }
 
-    public boolean filtrer(int i) {
-
-        if(i == multiple){
-            result += i + "\n";
-            return true;
-        }
-
-        if(i % multiple == 0){
-            return true;
-        }
-        if(filtreSuivant != null){
-            return filtreSuivant.filtrer(i);
-        }
-        filtreSuivant = new Filtre(multiple + 1);
-        result += i + "\n";
-        return false;
-    }
-    public String toString(){
-        if(filtreSuivant != null){
-            result += filtreSuivant.toString();
-        }
-        return result;
+    /** 
+     * le filtrage d'un entier n consiste à "éliminer" n s'il est multiple
+     * de p ; si ce n'est pas le cas, de deux choses l'une : soit le filtre
+     * courant a un suivant, auquel cas on demande à ce filtre suivant de
+     * poursuivre le filtrage de n, soit le filtre courant est le dernier,
+     * auquel cas n (qui n'est multiple d'aucune valeur <= p) est premier :
+     * il faut donc créer comme filtre suivant un filtre de valeur n
+     */
+    public void filtrer(int n) 
+    {
+	if (n % valeur != 0) 
+	    if (estDernier()) 
+		suivant = new Filtre(n) ;
+	    else suivant.filtrer(n) ;
     }
 }

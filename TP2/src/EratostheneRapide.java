@@ -10,7 +10,7 @@ public class EratostheneRapide {
      * de commande la valeur de N (par défaut : 10000).
      */
     public static void main (String [] args) {
-	int i = 10000 ;
+	int i = 100000 ;
 	if (args.length > 0) 
 	    i = (new Integer(args[0])).intValue() ;	
 	GenerateurRapide g = new GenerateurRapide(i) ;
