@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="694341e9-2b05-467f-a1eb-6fdd00b48efc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/TP2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._Eratosthene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._EratostheneRapide.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._Filtre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._FiltreRapide.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._Generateur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._GenerateurRapide.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._comparaison.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._comparer.R" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/._test.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/Eratosthene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/EratostheneRapide.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/Filtre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/FiltreRapide.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/Generateur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/GenerateurRapide.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/comparaison.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/comparer.R" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fichiers-tp2/test.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AlgoEratostene.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1QeA8U9dKFctaOUjlZYHwCkRmhg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="AlgoEratostene" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AlgoEratostene" />
+      <module name="TP2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AlgoEratostene" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="694341e9-2b05-467f-a1eb-6fdd00b48efc" name="Default Changelist" comment="" />
+      <created>1568120528851</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1568120528851</updated>
+      <workItem from="1568120529984" duration="1676000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
