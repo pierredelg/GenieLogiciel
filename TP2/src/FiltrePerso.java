@@ -13,13 +13,12 @@ public class FiltrePerso {
         this.multiple = i;
     }
 
-    public boolean filtrer(int i) {
+    boolean filtrer(int i) {
 
         if(i == multiple){
             result += i + "\n";
             return true;
         }
-
         if(i % multiple == 0){
             return true;
         }
