@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="694341e9-2b05-467f-a1eb-6fdd00b48efc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entiers1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entiers2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EratosthenePerso.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GenerateurPerso.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fichiers-tp2/Eratosthene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Eratosthene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fichiers-tp2/EratostheneRapide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EratostheneRapide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fichiers-tp2/Filtre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Filtre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fichiers-tp2/FiltreRapide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FiltreRapide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fichiers-tp2/Generateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Generateur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fichiers-tp2/GenerateurRapide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GenerateurRapide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fichiers-tp2/comparer.R" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Filtre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FiltrePerso.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,11 +26,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Projet1" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="vcs.Subversion.SSH" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -124,7 +111,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568120528851</updated>
-      <workItem from="1568120529984" duration="7649000" />
+      <workItem from="1568120529984" duration="7975000" />
+      <workItem from="1568181871811" duration="1153000" />
     </task>
     <task id="LOCAL-00001" summary="ajout ex1 tp2">
       <created>1568122220850</created>
@@ -154,7 +142,21 @@
       <option name="project" value="LOCAL" />
       <updated>1568125991646</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fin tp2">
+      <created>1568129001243</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1568129001243</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fin tp2">
+      <created>1568129011160</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1568129011160</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +167,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -174,6 +178,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ajout ex1 tp2" />
     <MESSAGE value="ajout ex2 tp2" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout ex2 tp2" />
+    <MESSAGE value="fin tp2" />
+    <option name="LAST_COMMIT_MESSAGE" value="fin tp2" />
   </component>
 </project>
