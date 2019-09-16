@@ -1,3 +1,5 @@
+import java.util.concurrent.CompletableFuture;
+
 /**
  * Classe représentant un nombre rationnel sous la forme (n + a/b)
  * avec
@@ -12,7 +14,7 @@
  * @author DELGRANGE Pierre
  */
 
-public class Rationnel {
+public class Rationnel implements Comparable<Rationnel> {
 
     private int n;
     private int a;
@@ -251,4 +253,23 @@ public class Rationnel {
         System.out.println();
     }
 
+    @Override
+    public int compareTo(Rationnel o) {
+
+        if(this.n != o.n){
+            return this.n - o.n;
+        }
+        if(this.a != o.a && this.b == o.b){
+            return this.a - o.a;
+        }
+        if(this.a == o.a && this.b != o.b){
+            return o.b - this.b;
+        }
+        if(this.a != o.a){
+            Double premier = (double) this.a /(double) this.b;
+            Double deuxieme = (double) o.a / (double) o.b;
+            return premier.compareTo(deuxieme);
+        }
+        return 0;
+    }
 }
