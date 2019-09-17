@@ -1,6 +1,5 @@
 /**
- * Classe représentant un nombre rationnel sous la forme (n + a/b)
- * avec
+ * Classe représentant un nombre rationnel sous la forme (n + a/b) avec :
  * <ul>
  *      <li> n est un entier relatif (appelé partie entière du nombre rationnel)</li>
  *      <li> a un entier positif</li>
@@ -11,8 +10,7 @@
  *
  * @author DELGRANGE Pierre
  */
-
-public class Rationnel {
+public class Rationnel implements Comparable<Rationnel> {
 
     private int n;
     private int a;
@@ -25,10 +23,10 @@ public class Rationnel {
      * @param b dénominateur de la partie décimale du nombre rationnel
      */
     public Rationnel(int n,int a,int b){
-        int [] fraction = simplifierFraction(a,b);
-        this.n = n + fraction[0];
-        this.a = fraction[1];
-        this.b = fraction[2];
+
+        this.n = n;
+        this.a = a;
+        this.b = b;
     }
     /**
      * Constructeur d'un nombre rationnel sans partie entière
@@ -36,10 +34,8 @@ public class Rationnel {
      * @param b dénominateur de la partie décimale du nombre rationnel
      */
     public Rationnel(int a, int b){
-        int [] fraction = simplifierFraction(a,b);
-        this.n = fraction[0];
-        this.a = fraction[1];
-        this.b = fraction[2];
+        this.a = a;
+        this.b = b;
     }
     /**
      * Constructeur d'un nombre rationnel sans partie décimale
@@ -50,7 +46,7 @@ public class Rationnel {
     }
 
     /**
-     * Représente le nombre rationnel sous la forme n + a / b
+     * Représente le nombre rationnel sous la forme ( n + a / b )
      * @return le nombre rationnel n + a / b
      */
     @Override
@@ -59,7 +55,7 @@ public class Rationnel {
     }
 
     /**
-     *  Vérifie si le nombre est nul ( égal à 0).
+     *  Vérifie si le nombre est nul ( égal à 0 ).
      * @return true - Si le nombre est égal à 0.
      */
     public boolean estNul(){
@@ -72,183 +68,290 @@ public class Rationnel {
      */
     public Rationnel inverse(){
 
-        if(estNul()){
-            return new Rationnel(0);
-        }
+        //On simplifie le rationnel
+        this.simplifierRationnel();
 
+        //Si le rationnel est nul alors il n'a pas d'inverse
+        if(estNul()){
+            return null;
+        }
+        //Si la partie entière est nulle alors on inverse la partie décimale (a/b en b/a)
         if(n == 0 && a != 0 && b != 0){
             return new Rationnel(b,a);
         }
-
+        //Si la partie décimale est nulle alors on inverse la partie entière (1/n)
         if(n != 0 && a == 0 && b == 0){
             return new Rationnel(1/n);
         }
+
+        //todo inverse d'un rationnel sans partie nulle
+        //Sinon on applique la règle n +
+
+        /*
         int [] fraction = switchRationnelFraction(this);
-
-        int[] fraction1 = simplifierFraction(fraction[2], (fraction[0] * fraction[2] + fraction[1]));
-
+        int[] fraction1 = simplifierRationnel(fraction[2], (fraction[0] * fraction[2] + fraction[1]));
         return new Rationnel(fraction1[0],fraction1[1],fraction1[2]);
+         */
+
+        return null;
     }
 
     /**
      * Additionne l'instance courante avec un autre nombre rationnel.
-     * @param r - Le rationnel à ajouter à l'instance courante this.
+     * @param rationnel - Le rationnel à ajouter à l'instance courante this.
      * @return Un nouveau rationnel résultat de l'addition.
      */
-    public Rationnel ajouter(Rationnel r){
+    public Rationnel ajouter(Rationnel rationnel){
 
-        if(this.estNul()){
-            return r;
+        int nAjout, aAjout, bAjout;
+
+        //Si un rationnel est nul on retourne l'autre rationnel
+        if(estNul()){
+            return rationnel;
         }
-        if(r.estNul()){
+        if(rationnel.estNul()){
             return this;
         }
 
-        int nAjout = 0;
-        int aAjout = 0;
-        int bAjout = 0;
+        //On ajoute les parties entières
+        nAjout = this.n + rationnel.n;
 
-        nAjout = this.n + r.n;
+        //On ajoute les parties décimales
+        Rationnel resultAjoutPartieDecimale = ajoutPartieDecimale(this,rationnel);
+        nAjout = nAjout + resultAjoutPartieDecimale.n;
+        aAjout = resultAjoutPartieDecimale.a;
+        bAjout = resultAjoutPartieDecimale.b;
 
-        int [] resultFraction = ajoutFraction(this.a,this.b,r.a,r.b);
+        //On simplifie le Rationnel
+        Rationnel rationnelSimplifie = new Rationnel(nAjout ,aAjout,bAjout);
+        rationnelSimplifie.simplifierRationnel();
 
-        aAjout = resultFraction[1];
-
-        bAjout = resultFraction[2];
-
-        int[] fraction = simplifierFraction(aAjout, bAjout);
-
-        return new Rationnel(nAjout + fraction[0],fraction[1],fraction[2]);
+        return rationnelSimplifie;
     }
 
     /**
      * Multiplie l'instance courante avec un autre nombre rationnel.
-     * @param r - Le rationnel à multiplier avec l'instance courante this.
+     * @param rationnel - Le rationnel à multiplier avec l'instance courante this.
      * @return Un nouveau rationnel résultat de la multiplication.
      */
-    public Rationnel multiplier(Rationnel r){
+    public Rationnel multiplier(Rationnel rationnel){
 
-        if(this.estNul() || r.estNul()){
+        int nMultiplier, aMultiplier, bMultiplier;
+
+        //Si l'un des Rationnels est nul le résultat est nul
+        if(this.estNul() || rationnel.estNul()){
             return new Rationnel(0);
         }
 
-        int nMultiplier = 0;
-        int aMultiplier = 0;
-        int bMultiplier = 0;
+        //On multiplie la partie entière
+        nMultiplier = n * rationnel.n;
 
-        nMultiplier = n * r.n;
+        //On multiplie la partie décimale
+        Rationnel resultMultiplierPartieDecimale = multiplierPartieDecimale(this,rationnel);
+        nMultiplier = nMultiplier + resultMultiplierPartieDecimale.n;
+        aMultiplier = resultMultiplierPartieDecimale.a;
+        bMultiplier =  resultMultiplierPartieDecimale.b;
 
-        int [] resultMultiplierFraction = MultiplierFraction(a,b,r.a,r.b);
+        //On simplifie le Rationnel
+        Rationnel rationnelSimplifie = new Rationnel(nMultiplier,aMultiplier,bMultiplier);
+        rationnelSimplifie.simplifierRationnel();
 
-        aMultiplier = resultMultiplierFraction[1];
-        bMultiplier =  resultMultiplierFraction[2];
-
-        int[] fraction = simplifierFraction(aMultiplier, bMultiplier);
-
-        return new Rationnel(nMultiplier + fraction[0],fraction[1],fraction[2]);
+        return rationnelSimplifie;
     }
 
     /**
      * Vérifie l'égalité de résultat d'un objet avec l'instance courante this.
-     * Ne vérifie pas que les nombres sont exactement de la même forme.
      * @param objet - l'objet à tester
      * @return true - Si les deux nombres sont égaux.
      */
     @Override
     public boolean equals(Object objet) {
+        //Si c'est le même objet, on retourne vrai
         if (this == objet) {
             return true;
         }
-
+        //Si l'ojet n'est pas de la meme classe
         if (objet == null || getClass() != objet.getClass()){
             return false;
         }
 
         Rationnel rationnel = (Rationnel) objet;
 
-        return n == rationnel.n && a == rationnel.a && b == rationnel.b;
+        //On simplifie les rationnels
+        this.simplifierRationnel();
+        rationnel.simplifierRationnel();
+
+        //Si les attributs sont égaux on retourne vrai
+        if( n == rationnel.n && a == rationnel.a && b == rationnel.b){
+            return true;
+        }
+
+        //todo verifier le résultat
+
+        return false;
     }
 
-    private int[] switchRationnelFraction(Rationnel rationnel){
+    /**
+     * On ajoute la partie décimale composant le premier Rationnel (rationnel 1) avec la partie décimale du second Rationnel (rationnel 2).
+     * @param rationnel1 Le premier Rationnel.
+     * @param rationnel2 Le second Rationnel.
+     * @return Un nouvel objet Rationnel avec le résultat de la multiplication.
+     */
+    private Rationnel ajoutPartieDecimale(Rationnel rationnel1, Rationnel rationnel2){
 
-        int [] rationelSimplifie = simplifierFraction(rationnel.a,rationnel.b);
+        int aResult, bResult;
 
-        return new int[] {rationnel.n + rationelSimplifie[0],rationelSimplifie[1],rationelSimplifie[2]};
-    }
-    private Rationnel switchFractionRationnel(int a,int b){
-
-        int[] fraction = simplifierFraction(a, b);
-
-        return new Rationnel(fraction[0],fraction[1],fraction[2]);
-    }
-
-    private int[] ajoutFraction(int a1 , int b1, int a2, int b2){
-        int aResult = 0;
-        int bResult = 0;
-
-        if(b1 == b2){
-            aResult = a1 + a2;
-            bResult = b1;
+        //Si les dénominateurs sont égaux ont ajoute les numérateurs
+        if(rationnel1.b == rationnel2.b){
+            aResult = rationnel1.a + rationnel2.a;
+            bResult = rationnel1.b;
         }else{
-            aResult = a1 * b2;
-            bResult = b1 * a2;
+            //Si les dénominateurs sont différents ont multiplie les numérateurs avec les dénominateurs
+            aResult = rationnel1.a * rationnel2.b;
+            bResult = rationnel1.b * rationnel2.a;
         }
-        return new int [] {0,aResult,bResult};
+        return new Rationnel(0,aResult,bResult);
     }
 
+    /**
+     * On multiplie la partie décimale du premier Rationnel (rationnel 1) avec la partie décimale du second Rationnel (rationnel 2).
+     * @param rationnel1 Le premier Rationnel.
+     * @param rationnel2 Le second Rationnel.
+     * @return Un nouvel objet Rationnel, résultat de la multiplication des deux Rationnels en parametre.
+     */
+    private Rationnel multiplierPartieDecimale(Rationnel rationnel1 , Rationnel rationnel2){
 
-    private int[] MultiplierFraction(int a1,int b1,int a2, int b2){
-        return new int [] {0,a1 * a2,b1 * b2};
+        return new Rationnel(0,rationnel1.a * rationnel2.a,rationnel1.b * rationnel2.b);
     }
 
-    private int[] simplifierFraction(int a,int b){
+    /**
+     * On simplifie le Rationnel de façon à ce qu'il respecte ces contraintes:
+     * <ul>
+     *    <li> n est un entier relatif (appelé partie entière du nombre rationnel)</li>
+     *  *      <li> a un entier positif </li>
+     *  *      <li> b un entier strictement positif </li>
+     *  *      <li> a < b </li>
+     *  *      <li> 0 < (a/b) < 1 </li>
+     *  *      <li> a et b sont premiers entre eux (c'est-à-dire qu'il n'existe pas d'entier d>1 qui soit un diviseur à la fois de a et de b).</li>
+     * </ul>
+     */
+    private void simplifierRationnel(){
 
+        //Si le numérateur et le dénominateur sont égaux on ajoute 1 à la partie entière
+        //exemple : 0 + 2/2
         if(a == b){
-            return new int[] {1,0,1};
+            n++;
         }
-
+        //Si le numérateur est plus petit le dénominateur
+        //todo finir la simplification
         if(a < b && a > 0 && b % a == 0){
-            return new int[] {0,1,(b/a)};
+            a = 1;
+            b = b/a;
         }
 
         if(a > b && b > 0 && a % b == 0){
-            return new int[] {(a/b),0,1};
+            n = a/b;
+            a = 0;
+            b = 1;
         }
-
-        return new int[] {0,a,b};
-
     }
 
+    /**
+     * Comparaison de l'instance courante avec un autre Rationnel.
+     * @param rationnel Le rationnel à comparer.
+     * @return l'entier r :
+     * <ul>
+     *     <li> r < 0 - Si l'instance courante est plus petite que le rationnel en parametre.</li>
+     *     <li> r = 0 - Si l'instance courante est égale au rationnel en parametre en parametre.</li>
+     *     <li> r > 0 - Si l'instance courante est plus grande que le rationnel en parametre.</li>
+     * </ul>
+     */
+    @Override
+    public int compareTo(Rationnel rationnel) {
+
+        //Si les deux parties entières sont égales
+        if(this.n != rationnel.n){
+            return this.n - rationnel.n;
+        }
+        //Si les dénominateurs des parties décimales sont égaux
+        if(this.a != rationnel.a && this.b == rationnel.b){
+            return this.a - rationnel.a;
+        }
+        //Si les numérateurs des parties décimales sont égaux
+        if(this.a == rationnel.a && this.b != rationnel.b){
+            return rationnel.b - this.b;
+        }
+        //Les numérateurs et dénominateurs sont différents
+        if(this.a != rationnel.a){
+            Double premier = (double) this.a /(double) this.b;
+            Double deuxieme = (double) rationnel.a / (double) rationnel.b;
+            return premier.compareTo(deuxieme);
+        }
+        return 0;
+    }
+
+    //todo Vérifier nominateur / dénominateur dans les commentaires
+
     public static void main(String[] args) {
-        Rationnel r1 = new Rationnel(0,1,2);
+        Rationnel r1 = new Rationnel(0,0,2);
         System.out.println("Rationnel 1  = " + r1);
+        System.out.println("Rationnel 1 est nul : " + r1.estNul());
+        System.out.println("Inverse r1: "+ r1.inverse());
+
+        System.out.println();
+
         Rationnel r2 = new Rationnel(0,1,2);
         System.out.println("Rationnel 2  = " + r2);
-        System.out.println("Inverse r1: "+ r1.inverse());
+        System.out.println("Rationnel 2 est nul : " + r2.estNul());
         System.out.println("Inverse r2: "+ r2.inverse());
+
+        System.out.println();
+
         System.out.println("Addition r1 + r2 : "+ r1.ajouter(r2));
         System.out.println("Multiplication r1 * r2 : "+ r1.multiplier(r2));
+
         System.out.println();
+        System.out.println();
+
 
         Rationnel r3 = new Rationnel(1,2,3);
         System.out.println("Rationnel 3  = " + r3);
+        System.out.println("Rationnel 3 est nul : " + r3.estNul());
+        System.out.println("Inverse r3: "+ r3.inverse());
+
+        System.out.println();
+
         Rationnel r4 = new Rationnel(2,2,5);
         System.out.println("Rationnel 4  = " + r4);
-        System.out.println("Inverse r3: "+ r3.inverse());
+        System.out.println("Rationnel 4 est nul : " + r4.estNul());
         System.out.println("Inverse r4: "+ r4.inverse());
+
+        System.out.println();
+
         System.out.println("Addition r3 + r4 : "+ r3.ajouter(r4));
         System.out.println("Multiplication r3 * r4 : "+ r3.multiplier(r4));
+        System.out.println();
         System.out.println();
 
         Rationnel r5 = new Rationnel(1,1,2);
-        System.out.println("Rationnel 5  = " + r3);
-        Rationnel r6 = new Rationnel(1,1,2);
-        System.out.println("Rationnel 6  = " + r4);
-        System.out.println("Inverse r3: "+ r3.inverse());
-        System.out.println("Inverse r4: "+ r4.inverse());
-        System.out.println("Addition r3 + r4 : "+ r3.ajouter(r4));
-        System.out.println("Multiplication r3 * r4 : "+ r3.multiplier(r4));
+        System.out.println("Rationnel 5  = " + r5);
+        System.out.println("Rationnel 5 est nul : " + r5.estNul());
+        System.out.println("Inverse r5: "+ r5.inverse());
+
         System.out.println();
+
+        Rationnel r6 = new Rationnel(1,1,2);
+        System.out.println("Rationnel 6  = " + r6);
+        System.out.println("Rationnel 6 est nul : " + r6.estNul());
+        System.out.println("Inverse r6: "+ r6.inverse());
+
+        System.out.println();
+
+        System.out.println("Addition r5 + r6 : "+ r5.ajouter(r6));
+        System.out.println("Multiplication r5 * r6 : "+ r5.multiplier(r6));
+        System.out.println();
+        System.out.println();
+
     }
 
 }
