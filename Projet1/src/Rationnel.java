@@ -84,16 +84,18 @@ public class Rationnel implements Comparable<Rationnel> {
             return new Rationnel(1/n);
         }
 
-        //todo inverse d'un rationnel sans partie nulle
-        //Sinon on applique la règle n +
+        //On transforme le rationnel en une fraction
 
-        /*
-        int [] fraction = switchRationnelFraction(this);
-        int[] fraction1 = simplifierRationnel(fraction[2], (fraction[0] * fraction[2] + fraction[1]));
-        return new Rationnel(fraction1[0],fraction1[1],fraction1[2]);
-         */
+        int numerateur = n * b + a;
+        int denominateur = b;
 
-        return null;
+        //On crée un nouveau rationnel en inversant le dénominateur et le numérateur
+        Rationnel inverse = new Rationnel(0,denominateur,numerateur);
+
+        //On le simplifie
+        inverse.simplifierRationnel();
+
+        return inverse;
     }
 
     /**
@@ -186,8 +188,13 @@ public class Rationnel implements Comparable<Rationnel> {
             return true;
         }
 
-        //todo verifier le résultat
+        Double valeurRationnel1 = (double)this.n + (this.a / this.b);
+        Double valeurRationnel2 = (double)rationnel.n + (rationnel.a / rationnel.b);
 
+        //Si les deux valeurs des rationnels sont égales ont retourne vrai
+        if(valeurRationnel1.equals(valeurRationnel2)){
+            return true;
+        }
         return false;
     }
 
@@ -237,22 +244,39 @@ public class Rationnel implements Comparable<Rationnel> {
      */
     private void simplifierRationnel(){
 
-        //Si le numérateur et le dénominateur sont égaux on ajoute 1 à la partie entière
-        //exemple : 0 + 2/2
-        if(a == b){
-            n++;
+        //Si la partie décimale est négative
+
+        if(a < 0 && b < 0){
+            a = -a;
+            b = -b;
         }
-        //Si le numérateur est plus petit le dénominateur
-        //todo finir la simplification
-        if(a < b && a > 0 && b % a == 0){
-            a = 1;
-            b = b/a;
+        if(a < 0 && b > 0){
+            a = -a;
+            //todo finir simplifier
         }
 
-        if(a > b && b > 0 && a % b == 0){
-            n = a/b;
+        //Si le numérateur et le dénominateur sont égaux on ajoute 1 à la partie entière
+        //exemple : 0 + 2/2 -> 1 + 0/1
+        if(a == b){
+            n++;
             a = 0;
             b = 1;
+        }
+
+        //Si le numérateur est plus grand que le dénominateur et que le numérateur est un multiple du dénominateur
+        //exemple : 0 + 15/5 -> 3 + 0/1
+        if(a > b && b != 0 && a % b == 0){
+            n += a/b;
+            a = 0;
+            b = 1;
+        }
+        //Si le numérateur est
+
+        //Si le numérateur est plus petit que le dénominateur et que le dénominateur est multiple du numérateur
+        //exemple : 0 + 5/15 -> 0 + 1/3
+        if(a < b && a != 0 && b % a == 0){
+            a = 1;
+            b = b/a;
         }
     }
 
@@ -289,8 +313,6 @@ public class Rationnel implements Comparable<Rationnel> {
         }
         return 0;
     }
-
-    //todo Vérifier nominateur / dénominateur dans les commentaires
 
     public static void main(String[] args) {
         Rationnel r1 = new Rationnel(0,0,2);
