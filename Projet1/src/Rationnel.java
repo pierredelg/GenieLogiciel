@@ -65,6 +65,14 @@ public class Rationnel implements Comparable<Rationnel> {
         return n == 0 && a == 0;
     }
 
+    public int getPartieEntiere() {
+        return n;
+    }
+
+    public double getPartieDecimale() {
+        return (double) a / (double) b;
+    }
+
     /**
      * Calcule et renvoie le nombre rationnel inverse de l'instance courante.
      * @return le nombre rationnel inverse de l'instance courante
@@ -378,6 +386,8 @@ public class Rationnel implements Comparable<Rationnel> {
         System.out.println("Rationnel 5  = " + r5);
         System.out.println("Rationnel 5 est nul : " + r5.estNul());
         System.out.println("Inverse r5: "+ r5.inverse());
+        System.out.println("n = " + r5.getPartieEntiere());
+        System.out.println("decimale = " + r5.getPartieDecimale());
 
         System.out.println();
 
