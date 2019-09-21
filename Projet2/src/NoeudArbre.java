@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 /**
  * Représentation d'un arbre binaire de chaine de caractères
@@ -126,6 +127,7 @@ public class NoeudArbre {
     public boolean estVide(){
         return this.noeud == null;
     }
+
     /**
      * Recherche de l'animal par l'utilisateur.
      * On parcourt l'arbre suivant les réponses de l'utilisateur.
@@ -258,21 +260,29 @@ public class NoeudArbre {
         }while(!testNon(reponse) && !testOui(reponse));
         return reponse;
     }
+
     /**
      *Cherche le chemin à parcourir pour atteindre l'animal en paramètre
      * @param animal
      */
-    private String definir(String animal){
+    private String rechercheArbre(String animal){
+
         if(this.estVide()){
             return "";
         }
         if(this.noeud.equals(animal)){
-            return " => " + this.noeud;
+            return this.noeud;
         }
-        return this.noeudArbreGauche.definir(animal) + this.noeudArbreDroit.definir(animal);
+        if(this.getNoeudArbreGauche() != null) {
+            return this.noeudArbreGauche.rechercheArbre(animal);
+        }
+        if(this.getNoeudArbreDroit() != null) {
+            return this.noeudArbreDroit.rechercheArbre(animal);
+        }
+        return animal + " n'est pas présent dans l'arbre";
 
     }
-    private static int indexStatic;
+
     /**
      *  Remplit l'arbre selon un tableau de chaine de caractères.
      * @param parametres - Tableau de chaine de caractères.
@@ -328,9 +338,9 @@ public class NoeudArbre {
         }else{
 
             if(args[0].equals("--definir")){
-                indexStatic = 2;
                 n1.remplirArbre(args,2);
-                n1.definir(args[2]);
+                System.out.println(n1);
+                System.out.println(n1.rechercheArbre(args[1]));
             }else {
                 n1.remplirArbre(args,0);
                 System.out.println(n1);
