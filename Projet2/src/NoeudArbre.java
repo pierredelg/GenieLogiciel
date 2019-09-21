@@ -7,41 +7,106 @@ import java.util.Scanner;
  */
 public class NoeudArbre {
 
+    /**
+     * Chaine de caractères représentant le noeud de l'arbre.
+     */
     private String noeud;
+
+    /**
+     * Arbre gauche.
+     */
     private NoeudArbre noeudArbreGauche;
+
+    /**
+     * Arbre droit.
+     */
     private NoeudArbre noeudArbreDroit;
+
     private Scanner  scanner =  new Scanner(System.in);
 
     private static NoeudArbre derniereFeuille;
 
     public NoeudArbre(){}
 
+    /**
+     * Constructeur de l'arbre NoeudArbre.
+     * Les arbres droit et gauche sont initialisés à null.
+     * @param noeud - La chaine de caractère représentant le noeud.
+     */
     public NoeudArbre(String noeud){
         this.noeud = noeud;
     }
 
+    /**
+     * Constructeur complet de l'arbre NoeudArbre.
+     * @param noeud - La chaine de caractère représentant le noeud.
+     * @param arbreGauche - l'arbre gauche.
+     * @param arbreDroit - l'arbre droit.
+     */
+    public NoeudArbre(String noeud, NoeudArbre arbreGauche,NoeudArbre arbreDroit){
+        this.noeud = noeud;
+        this.noeudArbreGauche = arbreGauche;
+        this.noeudArbreDroit = arbreDroit;
+    }
+    /**
+     * @return La chaine de caractères représentant le noeud.
+     */
     public String getNoeud() {
         return noeud;
     }
 
+    /**
+     * Modifie la chaine de caractères représentant le noeud.
+     * @param noeud - La nouvelle chaine de caractère
+     */
     public void setNoeud(String noeud) {
         this.noeud = noeud;
     }
 
+    /**
+     * @return L'arbre gauche.
+     */
     public NoeudArbre getNoeudArbreGauche() {
         return noeudArbreGauche;
     }
 
+    /**
+     * Modifie l'arbre gauche avec un nouvel arbre.
+     * @param noeudArbreGauche - Le nouvel arbre gauche.
+     */
     public void setNoeudArbreGauche(NoeudArbre noeudArbreGauche) {
         this.noeudArbreGauche = noeudArbreGauche;
     }
 
-    private NoeudArbre getNoeudArbreDroit() {
+    /**
+     * @return L'arbre droit.
+     */
+    public NoeudArbre getNoeudArbreDroit() {
         return noeudArbreDroit;
     }
 
+    /**
+     * Modifie l'arbre droit avec un nouvel arbre.
+     * @param noeudArbreDroit - Le nouvel arbre.
+     */
     private void setNoeudArbreDroit(NoeudArbre noeudArbreDroit) {
         this.noeudArbreDroit = noeudArbreDroit;
+    }
+
+    /**
+     * Affichage de chaque noeud de l'arbre en préfixe (Noeud central, Noeud Gauche , Noeud Droit)
+     * @return Une chaine de caractères représentant chaque noeuds en préfixe.
+     */
+    @Override
+    public String toString() {
+
+        if(noeud == null){
+            return "";
+        }
+        if(estUneFeuille()){
+            return noeud;
+        }
+        return noeud + " " + noeudArbreGauche + " " + noeudArbreDroit;
     }
 
     /**
@@ -55,43 +120,28 @@ public class NoeudArbre {
     }
 
     /**
-     * Affichage de chaque noeud de l'arbre en préfixe (Noeud central, Noeud Gauche , Noeud Droit)
-     * @return Une chaine de caractères représentant chaque noeuds en préfixe.
+     * Vérifie si l'arbre est vide.
+     * @return true - Si l'arbre est vide.
      */
-    @Override
-    public String toString() {
-
-        String result = "";
-
-        if(noeud != null){
-            result += noeud + " ";
-        }
-        if(noeudArbreGauche != null){
-            result += noeudArbreGauche.toString() + " ";
-        }
-        if(noeudArbreDroit != null){
-            result += noeudArbreDroit + " ";
-        }
-        return result;
+    public boolean estVide(){
+        return this.noeud == null;
     }
-
     /**
      * Recherche de l'animal par l'utilisateur.
      * On parcourt l'arbre suivant les réponses de l'utilisateur.
      * A la fin l'ordinateur propose un animal en fonction des réponses de l'utilisateur.
      * @return true - Si l'ordinateur trouve l'animal.
      */
-    private boolean rechercherAnimal(){
+    public boolean rechercherAnimal(){
 
         String reponse;
 
-        //Si c'est une
         if(estUneFeuille()) {
             System.out.println("Est-ce " + this.noeud + " ?");
         }else{
             System.out.println(this.noeud);
         }
-        reponse = scanner.nextLine();
+        reponse = saisieOuiNon();
 
         if(estUneFeuille() && testOui(reponse)){
             return true;
@@ -123,7 +173,11 @@ public class NoeudArbre {
      */
     public void apprendre(){
 
-        String dernierAnimal = derniereFeuille.getNoeud();
+        String dernierAnimal = null;
+
+        if(derniereFeuille != null) {
+            dernierAnimal = derniereFeuille.getNoeud();
+        }
 
         System.out.println("Qu’est-ce que c’est ?");
         String nouvelAnimal;
@@ -134,13 +188,13 @@ public class NoeudArbre {
         derniereFeuille.setNoeud(nouvelleQuestion);
 
         System.out.println("Quelle doit être la réponse pour " + nouvelAnimal + " ?");
-        String nouvelleRéponse = scanner.nextLine();
+        String nouvelleReponse = saisieOuiNon();
 
-        if(testOui(nouvelleRéponse)) {
+        if(testOui(nouvelleReponse)) {
             derniereFeuille.setNoeudArbreDroit(new NoeudArbre(nouvelAnimal));
             derniereFeuille.setNoeudArbreGauche(new NoeudArbre(dernierAnimal));
         }
-        if(testNon(nouvelleRéponse)){
+        if(testNon(nouvelleReponse)){
             derniereFeuille.setNoeudArbreDroit(new NoeudArbre(dernierAnimal));
             derniereFeuille.setNoeudArbreGauche(new NoeudArbre(nouvelAnimal));
         }
@@ -163,9 +217,12 @@ public class NoeudArbre {
             }
             System.out.println("Arbre complet : " + this.toString());
             System.out.println("Voulez-vous rejouer ?");
-             reponse = scanner.nextLine();
+             reponse = saisieOuiNon();
 
         }while(testOui(reponse));
+
+        System.out.println("**********Fin du Jeu***********");
+        System.out.println("\n       Merci d'avoir jouer");
     }
 
     /**
@@ -187,40 +244,66 @@ public class NoeudArbre {
     }
 
     /**
-     *
+     * Permet d'effectuer la saisie de données par l'utilisateur.
+     * En vérifiant que la chaine de caractere correspond à 'oui' ou 'non'.
+     * @return La chaine de caractère correspondant à 'oui' ou 'non'.
+     */
+    private String saisieOuiNon(){
+        String reponse = null;
+        do{
+            if(reponse != null){
+                System.out.println("Merci de répondre par oui ou non : ");
+            }
+            reponse = scanner.nextLine();
+        }while(!testNon(reponse) && !testOui(reponse));
+        return reponse;
+    }
+    /**
+     *Cherche le chemin à parcourir pour atteindre l'animal en paramètre
      * @param animal
      */
-    private void definir(String animal){
+    private String definir(String animal){
+        if(this.estVide()){
+            return "";
+        }
+        if(this.noeud.equals(animal)){
+            return " => " + this.noeud;
+        }
+        return this.noeudArbreGauche.definir(animal) + this.noeudArbreDroit.definir(animal);
+
+    }
+    private static int indexStatic;
+    /**
+     *  Remplit l'arbre selon un tableau de chaine de caractères.
+     * @param parametres - Tableau de chaine de caractères.
+     * @param index - index de départ.
+     */
+    private void remplirArbre(String[] parametres, int index){
+
+       for (int i = index;i< parametres.length;i++){
+           ajouterUnElement(parametres[i]);
+       }
 
     }
 
     /**
-     *  Remplit l'arbre selon un tableau de chaine de caractères
-     * @param parametres - Tableau de chaine de caractères
-     * @param indexDebut
-     * @return
+     * Ajoute une chaine de caractère dans l'arbre
+     * @param parametre - La chaine de caractère à insérer.
      */
-    private NoeudArbre remplirArbre(String[] parametres, int indexDebut){
-
-        if(parametres.length == indexDebut){
-            return new NoeudArbre(parametres[indexDebut]);
+    private void ajouterUnElement(String parametre) {
+        if(this.estVide()){
+            this.noeud = parametre;
+        }else {
+            if (this.noeudArbreGauche == null) {
+                this.noeudArbreGauche = new NoeudArbre(parametre);
+            } else {
+                if (this.noeudArbreDroit == null) {
+                    this.noeudArbreDroit = new NoeudArbre(parametre);
+                }else{
+                        this.noeudArbreDroit.ajouterUnElement(parametre);
+                }
+            }
         }
-//        return new NoeudArbre()
-//
-//
-//
-//        for (int i = indexDebut; i < args.length ; i= i+3){
-//            if(args[i] != null){
-//                this.setNoeud();new NoeudArbre(args[i]);
-//                if( args[i+1] != null){
-//                    n1.setNoeudArbreGauche(new NoeudArbre(args[i+1]));
-//                    if(args[i+2] != null){
-//                        n1.setNoeudArbreDroit(new NoeudArbre(args[i+2]));
-//                    }
-//                }
-//            }
-//        }
-        return null;
     }
 
     public static void main(String[] args) {
@@ -244,14 +327,17 @@ public class NoeudArbre {
 
         }else{
 
-            if(args[1].equals("--definir")){
+            if(args[0].equals("--definir")){
+                indexStatic = 2;
+                n1.remplirArbre(args,2);
                 n1.definir(args[2]);
             }else {
-                n1 = n1.remplirArbre(args,0);
+                n1.remplirArbre(args,0);
+                System.out.println(n1);
             }
 
         }
 
-        n1.jouer();
+        //n1.jouer();
     }
 }
