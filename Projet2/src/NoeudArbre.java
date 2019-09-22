@@ -262,28 +262,6 @@ public class NoeudArbre {
     }
 
     /**
-     *Cherche le chemin à parcourir pour atteindre l'animal en paramètre
-     * @param animal
-     */
-    private String rechercheArbre(String animal){
-
-        if(this.estVide()){
-            return "";
-        }
-        if(this.noeud.equals(animal)){
-            return this.noeud;
-        }
-        if(this.getNoeudArbreGauche() != null) {
-            return this.noeudArbreGauche.rechercheArbre(animal);
-        }
-        if(this.getNoeudArbreDroit() != null) {
-            return this.noeudArbreDroit.rechercheArbre(animal);
-        }
-        return animal + " n'est pas présent dans l'arbre";
-
-    }
-
-    /**
      *  Remplit l'arbre selon un tableau de chaine de caractères.
      * @param parametres - Tableau de chaine de caractères.
      * @param index - index de départ.
@@ -315,6 +293,37 @@ public class NoeudArbre {
             }
         }
     }
+    static Stack<String> pile = new Stack<>();
+
+    public boolean definir(String animal){
+
+        if(this.getNoeud().contains(animal)) {
+            pile.push("=>");
+            pile.push(this.getNoeud());
+            return true;
+        }else{
+
+            pile.push(this.getNoeud());
+            pile.push("- > ");
+
+            if(this.getNoeudArbreGauche() != null){
+                pile.push("non");
+
+                if(this.getNoeudArbreGauche().definir(animal)){
+
+                }
+            }
+            if (this.getNoeudArbreDroit() != null) {
+                pile.push("oui");
+
+                if (this.getNoeudArbreDroit().definir(animal)) {
+
+                }
+            }
+
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
 
@@ -340,7 +349,8 @@ public class NoeudArbre {
             if(args[0].equals("--definir")){
                 n1.remplirArbre(args,2);
                 System.out.println(n1);
-                System.out.println(n1.rechercheArbre(args[1]));
+                System.out.println(n1.definir((String) args[1].subSequence(0,(args[1].length()))));
+                System.out.println(pile);
             }else {
                 n1.remplirArbre(args,0);
                 System.out.println(n1);
