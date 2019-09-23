@@ -27,6 +27,7 @@ public class Rationnel implements Comparable<Rationnel> {
         this.n = n;
         this.a = a;
         this.b = b;
+        simplifierRationnel();
     }
     /**
      * Constructeur d'un nombre rationnel sans partie entière
@@ -36,6 +37,7 @@ public class Rationnel implements Comparable<Rationnel> {
     public Rationnel(int a, int b){
         this.a = a;
         this.b = b;
+        simplifierRationnel();
     }
     /**
      * Constructeur d'un nombre rationnel sans partie décimale
@@ -43,6 +45,7 @@ public class Rationnel implements Comparable<Rationnel> {
      */
     public Rationnel(int n){
         this.n = n;
+        this.b = 1;
     }
 
     /**
@@ -62,14 +65,19 @@ public class Rationnel implements Comparable<Rationnel> {
         return n == 0 && a == 0;
     }
 
+    public int getPartieEntiere() {
+        return n;
+    }
+
+    public double getPartieDecimale() {
+        return (double) a / (double) b;
+    }
+
     /**
      * Calcule et renvoie le nombre rationnel inverse de l'instance courante.
      * @return le nombre rationnel inverse de l'instance courante
      */
     public Rationnel inverse(){
-
-        //On simplifie le rationnel
-        this.simplifierRationnel();
 
         //Si le rationnel est nul alors il n'a pas d'inverse
         if(estNul()){
@@ -84,16 +92,17 @@ public class Rationnel implements Comparable<Rationnel> {
             return new Rationnel(1/n);
         }
 
-        //todo inverse d'un rationnel sans partie nulle
-        //Sinon on applique la règle n +
+        //On transforme le rationnel en une fraction
+        int numerateur = n * b + a;
+        int denominateur = b;
 
-        /*
-        int [] fraction = switchRationnelFraction(this);
-        int[] fraction1 = simplifierRationnel(fraction[2], (fraction[0] * fraction[2] + fraction[1]));
-        return new Rationnel(fraction1[0],fraction1[1],fraction1[2]);
-         */
+        //On crée un nouveau rationnel en inversant le dénominateur et le numérateur
+        Rationnel inverse = new Rationnel(0,denominateur,numerateur);
 
-        return null;
+        //On le simplifie
+        inverse.simplifierRationnel();
+
+        return inverse;
     }
 
     /**
@@ -143,14 +152,10 @@ public class Rationnel implements Comparable<Rationnel> {
             return new Rationnel(0);
         }
 
-        //On multiplie la partie entière
-        nMultiplier = n * rationnel.n;
-
-        //On multiplie la partie décimale
-        Rationnel resultMultiplierPartieDecimale = multiplierPartieDecimale(this,rationnel);
-        nMultiplier = nMultiplier + resultMultiplierPartieDecimale.n;
-        aMultiplier = resultMultiplierPartieDecimale.a;
-        bMultiplier =  resultMultiplierPartieDecimale.b;
+        //On multiplie
+        nMultiplier = 0;
+        aMultiplier = (n * b + a) * (rationnel.n * rationnel.b + rationnel.a);
+        bMultiplier =  b * rationnel.b;
 
         //On simplifie le Rationnel
         Rationnel rationnelSimplifie = new Rationnel(nMultiplier,aMultiplier,bMultiplier);
@@ -170,7 +175,7 @@ public class Rationnel implements Comparable<Rationnel> {
         if (this == objet) {
             return true;
         }
-        //Si l'ojet n'est pas de la meme classe
+        //Si l'objet n'est pas de la meme classe
         if (objet == null || getClass() != objet.getClass()){
             return false;
         }
@@ -186,8 +191,13 @@ public class Rationnel implements Comparable<Rationnel> {
             return true;
         }
 
-        //todo verifier le résultat
+        Double valeurRationnel1 = (double)this.n + (this.a / this.b);
+        Double valeurRationnel2 = (double)rationnel.n + (rationnel.a / rationnel.b);
 
+        //Si les deux valeurs des rationnels sont égales ont retourne vrai
+        if(valeurRationnel1.equals(valeurRationnel2)){
+            return true;
+        }
         return false;
     }
 
@@ -207,21 +217,47 @@ public class Rationnel implements Comparable<Rationnel> {
             bResult = rationnel1.b;
         }else{
             //Si les dénominateurs sont différents ont multiplie les numérateurs avec les dénominateurs
-            aResult = rationnel1.a * rationnel2.b;
-            bResult = rationnel1.b * rationnel2.a;
+            aResult = rationnel1.a * rationnel2.b + rationnel2.a * rationnel1.b;
+            bResult = rationnel1.b * rationnel2.b;
         }
         return new Rationnel(0,aResult,bResult);
     }
 
     /**
-     * On multiplie la partie décimale du premier Rationnel (rationnel 1) avec la partie décimale du second Rationnel (rationnel 2).
-     * @param rationnel1 Le premier Rationnel.
-     * @param rationnel2 Le second Rationnel.
-     * @return Un nouvel objet Rationnel, résultat de la multiplication des deux Rationnels en parametre.
+     *  Permet de simplifier le rationnel de façon à ce que
+     *  le numérateur  et le dénominateur de la partie décimale soit positif.
+     *
      */
-    private Rationnel multiplierPartieDecimale(Rationnel rationnel1 , Rationnel rationnel2){
+    private void simplifieNegatif(){
 
-        return new Rationnel(0,rationnel1.a * rationnel2.a,rationnel1.b * rationnel2.b);
+        //numérateur ET dénominateur négatif
+        if(a < 0 && b < 0){
+            a = -a;
+            b = -b;
+        }
+
+        //numérateur OU dénominateur négatif
+        if(a < 0 || b < 0){
+            if( b < 0){
+                a = -a;
+                b = -b;
+            }
+            a = (n*b) + a;
+            n = 0;
+
+            //exemple : -10/6
+            while((a < 0 && -a > b)){
+                n += -1;
+                a = a + b;
+            }
+
+            //exemple : -5/15 ou 5/-15
+            if(a < 0 && -a < b){
+                n += -1;
+                a = b + a;
+            }
+        }
+
     }
 
     /**
@@ -237,22 +273,37 @@ public class Rationnel implements Comparable<Rationnel> {
      */
     private void simplifierRationnel(){
 
-        //Si le numérateur et le dénominateur sont égaux on ajoute 1 à la partie entière
-        //exemple : 0 + 2/2
-        if(a == b){
-            n++;
-        }
-        //Si le numérateur est plus petit le dénominateur
-        //todo finir la simplification
-        if(a < b && a > 0 && b % a == 0){
-            a = 1;
-            b = b/a;
+        simplifieNegatif();
+
+        //Si le numérateur est à 0 on met le dénominateur à 1
+        //Exemple : 2 + 0/4 -> 2 + 0/1
+        if(a == 0){
+            b = 1;
         }
 
-        if(a > b && b > 0 && a % b == 0){
-            n = a/b;
+        //Si le numérateur et le dénominateur sont égaux
+        //exemple : 0 + 2/2 -> 1 + 0/1
+        // OU si le numérateur est plus grand que le dénominateur et que le numérateur est un multiple du dénominateur
+        //exemple : 0 + 15/5 -> 3 + 0/1
+        if(b != 0 && a == b || (a > b && b != 0 && a % b == 0)){
+            n += a/b;
             a = 0;
             b = 1;
+        }
+
+        //Si le numérateur est plus petit que le dénominateur et que le dénominateur est multiple du numérateur
+        //exemple : 0 + 5/15 -> 0 + 1/3
+        if(a < b && a != 0 && b % a == 0){
+            a = 1;
+            b = b/a;
+
+        }
+
+        //Si le numérateur est plus grand que le dénominateur et que le dénominateur n'est pas multiple du numérateur
+        //exemple : 1 + 17/5 -> 4 + 2/5
+        if(a > b && b != 0 && a % b != 0){
+            n += a/b;
+            a = a%b;
         }
     }
 
@@ -290,17 +341,15 @@ public class Rationnel implements Comparable<Rationnel> {
         return 0;
     }
 
-    //todo Vérifier nominateur / dénominateur dans les commentaires
-
     public static void main(String[] args) {
-        Rationnel r1 = new Rationnel(0,0,2);
+        Rationnel r1 = new Rationnel(0,1,2);
         System.out.println("Rationnel 1  = " + r1);
         System.out.println("Rationnel 1 est nul : " + r1.estNul());
         System.out.println("Inverse r1: "+ r1.inverse());
 
         System.out.println();
 
-        Rationnel r2 = new Rationnel(0,1,2);
+        Rationnel r2 = new Rationnel(-6,1,2);
         System.out.println("Rationnel 2  = " + r2);
         System.out.println("Rationnel 2 est nul : " + r2.estNul());
         System.out.println("Inverse r2: "+ r2.inverse());
@@ -321,7 +370,7 @@ public class Rationnel implements Comparable<Rationnel> {
 
         System.out.println();
 
-        Rationnel r4 = new Rationnel(2,2,5);
+        Rationnel r4 = new Rationnel(2,2,-5);
         System.out.println("Rationnel 4  = " + r4);
         System.out.println("Rationnel 4 est nul : " + r4.estNul());
         System.out.println("Inverse r4: "+ r4.inverse());
@@ -333,14 +382,16 @@ public class Rationnel implements Comparable<Rationnel> {
         System.out.println();
         System.out.println();
 
-        Rationnel r5 = new Rationnel(1,1,2);
+        Rationnel r5 = new Rationnel(-4,1,2);
         System.out.println("Rationnel 5  = " + r5);
         System.out.println("Rationnel 5 est nul : " + r5.estNul());
         System.out.println("Inverse r5: "+ r5.inverse());
+        System.out.println("n = " + r5.getPartieEntiere());
+        System.out.println("decimale = " + r5.getPartieDecimale());
 
         System.out.println();
 
-        Rationnel r6 = new Rationnel(1,1,2);
+        Rationnel r6 = new Rationnel(1,1,-2);
         System.out.println("Rationnel 6  = " + r6);
         System.out.println("Rationnel 6 est nul : " + r6.estNul());
         System.out.println("Inverse r6: "+ r6.inverse());
@@ -351,6 +402,36 @@ public class Rationnel implements Comparable<Rationnel> {
         System.out.println("Multiplication r5 * r6 : "+ r5.multiplier(r6));
         System.out.println();
         System.out.println();
+
+        System.out.println(new Rationnel(3, 4, 5)) ;
+        System.out.println();
+        System.out.println(new Rationnel(5, 4, 3)) ;
+        System.out.println();
+        System.out.println(new Rationnel(-2, 3)) ;
+        System.out.println();
+        System.out.println(new Rationnel(3, -2)) ;
+        System.out.println();
+        System.out.println(new Rationnel(3, 6, -2)) ;
+        System.out.println();
+        System.out.println(new Rationnel(3)) ;
+        System.out.println();
+        System.out.println(new Rationnel(1,3)) ;
+        System.out.println();
+        System.out.println(new Rationnel(5,3));
+        System.out.println();
+        System.out.println(new Rationnel(12,5));
+        System.out.println();
+        System.out.println(new Rationnel(28,6));
+        System.out.println();
+        System.out.println((new Rationnel(0,1,2).equals(new Rationnel(0,40,80))));
+        System.out.println();
+        System.out.println((new Rationnel(0,-1,2).equals(new Rationnel(0,40,-80))));
+        System.out.println();
+        System.out.println((new Rationnel(5).equals(new Rationnel(0,30,6))));
+        System.out.println();
+        System.out.println((new Rationnel(0,-1,2).equals(new Rationnel(0,40,-80))));
+
+
 
     }
 

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9ea17401-37fe-4287-8a2e-e659fe43dc3d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Projet1/ReadMe.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Projet 2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReadMe.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NoeudArbre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TP3/ReadMe.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Projet 2/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Projet 2/src/NoeudArbre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Projet1/bin/production/Projet1/Rationnel.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet1/bin/production/Projet1/Rationnel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Projet1/src/Rationnel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet1/src/Rationnel.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="184" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1QyScQBFxoYDPbRnKH7d6511PFD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="NoeudArbre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="NoeudArbre" />
+      <module name="Projet 2" />
+      <option name="PROGRAM_PARAMETERS" value="--definir &quot;cheval&quot; &quot;Est-ce un mamifère?&quot; &quot;crocodile&quot; &quot;Est-ce qu’il aboie ?&quot; &quot;un cheval&quot; &quot;un chien&quot;" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.NoeudArbre" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9ea17401-37fe-4287-8a2e-e659fe43dc3d" name="Default Changelist" comment="" />
+      <created>1568741421303</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1568741421303</updated>
+      <workItem from="1568741422996" duration="3122000" />
+      <workItem from="1568925156202" duration="2729000" />
+      <workItem from="1568983679289" duration="1343000" />
+      <workItem from="1568985833201" duration="2501000" />
+      <workItem from="1568988999538" duration="3934000" />
+      <workItem from="1568994280418" duration="3332000" />
+      <workItem from="1569066454982" duration="1732000" />
+      <workItem from="1569220142158" duration="430000" />
+      <workItem from="1569237409714" duration="553000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Projet2$NoeudArbre.ic" NAME="NoeudArbre Coverage Results" MODIFIED="1569067698048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
