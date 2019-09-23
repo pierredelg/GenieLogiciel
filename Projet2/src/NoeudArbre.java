@@ -1,3 +1,5 @@
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -200,15 +202,13 @@ public class NoeudArbre {
             derniereFeuille.setNoeudArbreDroit(new NoeudArbre(dernierAnimal));
             derniereFeuille.setNoeudArbreGauche(new NoeudArbre(nouvelAnimal));
         }
-
-
     }
 
     /**
      * Permet de lancer le jeu à partir du premier noeud de l'arbre.
      * Lorsque le jeu est terminé, on propose de rejouer.
      */
-    public void jouer() {
+    public void jouer(String fichierDeSortie) {
         String reponse;
         do {
             if (rechercherAnimal()) {
@@ -216,6 +216,9 @@ public class NoeudArbre {
             } else {
                 System.out.println("Perdu ! ");
                 apprendre();
+                if(fichierDeSortie != null) {
+                    ecrireFichier(fichierDeSortie, this);
+                }
             }
             System.out.println("Arbre complet : " + this.toString());
             System.out.println("Voulez-vous rejouer ?");
@@ -325,6 +328,70 @@ public class NoeudArbre {
         return false;
     }
 
+    private static String lireTexte(String fichier){
+
+        BufferedReader lecteurAvecBuffer = null;
+        String text = "";
+        try
+        {
+            lecteurAvecBuffer = new BufferedReader(new FileReader(fichier));
+        }
+        catch(FileNotFoundException exc)
+        {
+            System.out.println("Erreur d'ouverture");
+        }
+
+        try {
+            String line = null;
+            do {
+                if (lecteurAvecBuffer != null) {
+                    line = lecteurAvecBuffer.readLine();
+                    if(line != null) {
+                        text += line;
+                    }
+                }
+            }while (line != null);
+
+            if (lecteurAvecBuffer != null) {
+                lecteurAvecBuffer.close();
+            }
+        }catch (IOException e){
+            System.out.println("Erreur de lecture");
+        }
+        return text;
+    }
+
+    private static void ecrireFichier(String fichier, NoeudArbre noeudArbre){
+
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter(fichier);
+        } catch (FileNotFoundException e) {
+            System.out.println("Aucun fichier" + fichier);
+        }
+
+        if (writer != null) {
+            writer.println(noeudArbre);
+            writer.close();
+        }
+    }
+    private static String [] enleveEspace(String [] tableau){
+
+        ArrayList<String> liste = new ArrayList<>();
+        for(int i  = 0; i < tableau.length;i++){
+            if(!tableau[i].equals("") && !tableau[i].equals(" ")){
+                liste.add(tableau[i]);
+            }
+        }
+        String [] retour = new String[liste.size()];
+        int i = 0;
+        for(String s : liste){
+            retour[i] = s;
+            i++;
+        }
+        return retour;
+    }
+
     public static void main(String[] args) {
 
         NoeudArbre n1 = new NoeudArbre();
@@ -351,6 +418,16 @@ public class NoeudArbre {
                 System.out.println(n1);
                 System.out.println(n1.definir((String) args[1].subSequence(0,(args[1].length()))));
                 System.out.println(pile);
+            }
+            if(args[0].contains("$(<")){
+                String fichierDentree = args[0].split("<")[1].substring(0,args[0].split("<")[1].length()-1);
+                String fichierDeSortie = args[1].split(">")[1];
+                String[] arbreTexte = lireTexte(fichierDentree).split("\"");
+                arbreTexte = enleveEspace(arbreTexte);
+                n1.remplirArbre(arbreTexte,0);
+                System.out.println(n1);
+                ecrireFichier(fichierDeSortie,n1);
+                n1.jouer(fichierDeSortie);
             }else {
                 n1.remplirArbre(args,0);
                 System.out.println(n1);
@@ -358,6 +435,5 @@ public class NoeudArbre {
 
         }
 
-        //n1.jouer();
     }
 }
