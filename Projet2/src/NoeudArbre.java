@@ -298,6 +298,30 @@ public class NoeudArbre {
     }
     static Stack<String> pile = new Stack<>();
 
+    public String defini(String animal){
+        if(this.getNoeud().contains(animal)) {
+            return " => " + this.getNoeud();
+        }
+
+        if(this.getNoeudArbreGauche() != null && this.getNoeudArbreGauche().getNoeud().contains(animal)){
+            return this.getNoeud() + " -> " + " oui ; " + this.getNoeudArbreGauche().getNoeud();
+        }
+
+        if(this.getNoeudArbreDroit() != null && this.getNoeudArbreDroit().getNoeud().contains(animal)){
+            return this.getNoeud() + " -> " + " oui ; " + this.getNoeudArbreDroit().getNoeud();
+        }
+
+        if(this.getNoeudArbreGauche().estUneFeuille() && !this.getNoeudArbreGauche().getNoeud().contains(animal)){
+            return this.getNoeud() + " -> " + " oui ; " + this.getNoeudArbreDroit().defini(animal);
+        }
+
+        if(this.getNoeudArbreDroit().estUneFeuille() && !this.getNoeudArbreDroit().getNoeud().contains(animal)){
+            return this.getNoeud() + " -> " + " non ; " + this.getNoeudArbreGauche().defini(animal);
+        }
+
+        return " => pas d'animal";
+    }
+
     public boolean definir(String animal){
 
         if(this.getNoeud().contains(animal)) {
@@ -415,9 +439,9 @@ public class NoeudArbre {
 
             if(args[0].equals("--definir")){
                 n1.remplirArbre(args,2);
-                System.out.println(n1);
-                System.out.println(n1.definir((String) args[1].subSequence(0,(args[1].length()))));
-                System.out.println(pile);
+                System.out.println("arbre = " + n1);
+                String animal = (String) args[1].subSequence(0,(args[1].length()));
+                System.out.println(n1.definir(animal));
             }
             if(args[0].contains("$(<")){
                 String fichierDentree = args[0].split("<")[1].substring(0,args[0].split("<")[1].length()-1);

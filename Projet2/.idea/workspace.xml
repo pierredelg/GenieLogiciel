@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ea17401-37fe-4287-8a2e-e659fe43dc3d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/arbreFinal.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/arbreInitial.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arbreInitial.txt" beforeDir="false" afterPath="$PROJECT_DIR$/arbreInitial.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NoeudArbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NoeudArbre.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,7 +44,7 @@
     <configuration name="NoeudArbre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="NoeudArbre" />
       <module name="Projet 2" />
-      <option name="PROGRAM_PARAMETERS" value="$(&lt;arbreInitial.txt) 2&gt;arbreFinal.txt" />
+      <option name="PROGRAM_PARAMETERS" value="--definir &quot;caniche&quot; &quot;Est-ce un mammifère ?&quot; &quot;Est-ce un crustacé ?&quot; &quot;Est-ce un poisson ?&quot; &quot;un aigle&quot; &quot;un thon&quot; &quot;Est-ce qu'il est brun ?&quot; &quot;une crevette&quot; &quot;un homard&quot; &quot;Est-ce qu’il aboie ?&quot; &quot;Est-ce qu'il miaule ?&quot; &quot;un lapin&quot; &quot;un chat&quot; &quot;Est-ce qu'il est grand ?&quot; &quot;un caniche&quot; &quot;un st-bernard&quot;" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -74,7 +73,7 @@
       <workItem from="1568994280418" duration="3332000" />
       <workItem from="1569066454982" duration="1732000" />
       <workItem from="1569178908173" duration="10627000" />
-      <workItem from="1569255493743" duration="5645000" />
+      <workItem from="1569255493743" duration="7749000" />
     </task>
     <task id="LOCAL-00001" summary="definir animal">
       <created>1569191280013</created>
