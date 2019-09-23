@@ -173,13 +173,9 @@ public class NoeudArbre {
         if(args.length == 0) {
             n1 = new NoeudArbre("Est-ce un mammifère ?");
             NoeudArbre n2 = new NoeudArbre("un crocodile");
+            NoeudArbre n3 = new NoeudArbre("un chien");
             n1.setNoeudArbreGauche(n2);
-            NoeudArbre n3 = new NoeudArbre("Est-ce qu'il aboie ?");
             n1.setNoeudArbreDroit(n3);
-            NoeudArbre n4 = new NoeudArbre("un cheval");
-            n3.setNoeudArbreGauche(n4);
-            NoeudArbre n5 = new NoeudArbre("un chien");
-            n3.setNoeudArbreDroit(n5);
         }else{
             if(args[1].equals("--definir")){
                 n1.definir(args[2]);
