@@ -333,7 +333,7 @@ public class NoeudArbre {
      * @param fichier - Le chemin du fichier.
      * @return La chaine de caractères contenant l'arbre.
      */
-    private static String lireTexte(String fichier){
+    private String lireTexte(String fichier){
 
         BufferedReader lecteurAvecBuffer = null;
         String text = "";
@@ -371,7 +371,7 @@ public class NoeudArbre {
      * @param fichier - Le chemin du fichier.
      * @param noeudArbre - L'arbre à enregistrer dans le fichier.
      */
-    private static void ecrireFichier(String fichier, NoeudArbre noeudArbre){
+    private void ecrireFichier(String fichier, NoeudArbre noeudArbre){
 
         FileWriter fw;
 
@@ -393,7 +393,7 @@ public class NoeudArbre {
      * @param tableau - le tableau provenant du fichier.
      * @return  Le tableau contenant un noeud par indice.
      */
-    private static String [] enleveEspace(String [] tableau){
+    private String [] enleveEspace(String [] tableau){
 
         ArrayList<String> liste = new ArrayList<>();
         for(int i  = 0; i < tableau.length;i++){
@@ -442,8 +442,8 @@ public class NoeudArbre {
 
                 String fichierDentree = args[0].split("<")[1].substring(0,args[0].split("<")[1].length()-1);
                 String fichierDeSortie = args[1].split(">")[1];
-                String[] arbreTexte = lireTexte(fichierDentree).split("\"");
-                arbreTexte = enleveEspace(arbreTexte);
+                String[] arbreTexte = n1.lireTexte(fichierDentree).split("\"");
+                arbreTexte = n1.enleveEspace(arbreTexte);
                 n1.remplirArbre(arbreTexte,0);
                 try {
                     System.setErr(new PrintStream(new FileOutputStream(new File(fichierDeSortie))));
@@ -452,13 +452,14 @@ public class NoeudArbre {
                 }
                 System.err.println(n1);
                 System.out.println(n1);
-                ecrireFichier(fichierDeSortie,n1);
-
+                n1.ecrireFichier(fichierDeSortie,n1);
+                n1.jouer(fichierDeSortie);
             }else {
 
                 n1.remplirArbre(args,0);
                 System.out.println(n1);
             }
+
             //$(<arbreInitial.txt) 2>arbreFinal.txt
             //--definir "caniche" "Est-ce un mammifère ?" "Est-ce un crustacé ?" "Est-ce un poisson ?" "un aigle" "un thon" "Est-ce qu'il est brun ?" "une crevette" "un homard" "Est-ce qu’il aboie ?" "Est-ce qu'il miaule ?" "un lapin" "un chat" "Est-ce qu'il est grand ?" "un caniche" "un st-bernard"
         }

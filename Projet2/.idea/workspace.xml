@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9ea17401-37fe-4287-8a2e-e659fe43dc3d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arbreFinal.txt" beforeDir="false" afterPath="$PROJECT_DIR$/arbreFinal.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NoeudArbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NoeudArbre.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -74,7 +73,7 @@
       <workItem from="1569066454982" duration="1732000" />
       <workItem from="1569178908173" duration="10627000" />
       <workItem from="1569255493743" duration="7749000" />
-      <workItem from="1569326756293" duration="7684000" />
+      <workItem from="1569326756293" duration="9347000" />
     </task>
     <task id="LOCAL-00001" summary="definir animal">
       <created>1569191280013</created>
@@ -90,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569326766647</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Merge branch 'master' of https://git-iut.univ-lille1.fr/delgranp/genie-logiciel-da2i&#10;&#10;# Conflicts:&#10;#&#9;Projet2/.idea/workspace.xml&#10;#&#9;Projet2/src/NoeudArbre.java">
+      <created>1569335485017</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1569335485017</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
