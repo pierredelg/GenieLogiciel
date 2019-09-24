@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ea17401-37fe-4287-8a2e-e659fe43dc3d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arbreInitial.txt" beforeDir="false" afterPath="$PROJECT_DIR$/arbreInitial.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NoeudArbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NoeudArbre.java" afterDir="false" />
-    </list>
+    <list default="true" id="9ea17401-37fe-4287-8a2e-e659fe43dc3d" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +69,7 @@
       <workItem from="1568994280418" duration="3332000" />
       <workItem from="1569066454982" duration="1732000" />
       <workItem from="1569178908173" duration="10627000" />
-      <workItem from="1569255493743" duration="7749000" />
+      <workItem from="1569255493743" duration="7878000" />
     </task>
     <task id="LOCAL-00001" summary="definir animal">
       <created>1569191280013</created>
@@ -82,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569191280013</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="definir animal">
+      <created>1569263814024</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1569263814024</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
