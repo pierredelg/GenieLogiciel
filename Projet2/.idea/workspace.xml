@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9ea17401-37fe-4287-8a2e-e659fe43dc3d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arbreInitial.txt" beforeDir="false" afterPath="$PROJECT_DIR$/arbreInitial.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NoeudArbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NoeudArbre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TP2/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +23,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TP2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -44,7 +44,7 @@
     <configuration name="NoeudArbre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="NoeudArbre" />
       <module name="Projet 2" />
-      <option name="PROGRAM_PARAMETERS" value="--definir &quot;cheval&quot; &quot;Est-ce un mamifère?&quot; &quot;crocodile&quot; &quot;Est-ce qu’il aboie ?&quot; &quot;un cheval&quot; &quot;un chien&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="--definir &quot;caniche&quot; &quot;Est-ce un mammifère ?&quot; &quot;Est-ce un crustacé ?&quot; &quot;Est-ce un poisson ?&quot; &quot;un aigle&quot; &quot;un thon&quot; &quot;Est-ce qu'il est brun ?&quot; &quot;une crevette&quot; &quot;un homard&quot; &quot;Est-ce qu’il aboie ?&quot; &quot;Est-ce qu'il miaule ?&quot; &quot;un lapin&quot; &quot;un chat&quot; &quot;Est-ce qu'il est grand ?&quot; &quot;un caniche&quot; &quot;un st-bernard&quot;" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -72,17 +72,15 @@
       <workItem from="1568988999538" duration="3934000" />
       <workItem from="1568994280418" duration="3332000" />
       <workItem from="1569066454982" duration="1732000" />
-      <workItem from="1569220142158" duration="430000" />
-      <workItem from="1569237409714" duration="731000" />
-      <workItem from="1569241159199" duration="112000" />
-      <workItem from="1569325329641" duration="1211000" />
+      <workItem from="1569178908173" duration="10627000" />
+      <workItem from="1569255493743" duration="7749000" />
     </task>
-    <task id="LOCAL-00001" summary="defini">
-      <created>1569238115496</created>
+    <task id="LOCAL-00001" summary="definir animal">
+      <created>1569191280013</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1569238115496</updated>
+      <updated>1569191280013</updated>
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -104,8 +102,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="defini" />
-    <option name="LAST_COMMIT_MESSAGE" value="defini" />
+    <MESSAGE value="definir animal" />
+    <option name="LAST_COMMIT_MESSAGE" value="definir animal" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Projet2$NoeudArbre.ic" NAME="NoeudArbre Coverage Results" MODIFIED="1569067698048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

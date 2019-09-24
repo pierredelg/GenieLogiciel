@@ -1,3 +1,5 @@
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -22,6 +24,8 @@ public class NoeudArbre {
      * Arbre droit.
      */
     private NoeudArbre noeudArbreDroit;
+
+    private Scanner  scanner =  new Scanner(System.in);
 
     private static NoeudArbre derniereFeuille;
 
@@ -48,11 +52,9 @@ public class NoeudArbre {
         this.noeudArbreDroit = arbreDroit;
     }
     /**
-     * Récupère le noeud courrant.
      * @return La chaine de caractères représentant le noeud.
      */
     public String getNoeud() {
-
         return noeud;
     }
 
@@ -61,16 +63,13 @@ public class NoeudArbre {
      * @param noeud - La nouvelle chaine de caractère
      */
     public void setNoeud(String noeud) {
-
         this.noeud = noeud;
     }
 
     /**
-     * Récupère l'arbre gauche.
      * @return L'arbre gauche.
      */
     public NoeudArbre getNoeudArbreGauche() {
-
         return noeudArbreGauche;
     }
 
@@ -79,16 +78,13 @@ public class NoeudArbre {
      * @param noeudArbreGauche - Le nouvel arbre gauche.
      */
     public void setNoeudArbreGauche(NoeudArbre noeudArbreGauche) {
-
         this.noeudArbreGauche = noeudArbreGauche;
     }
 
     /**
-     * Récupère l'arbre droit.
      * @return L'arbre droit.
      */
     public NoeudArbre getNoeudArbreDroit() {
-
         return noeudArbreDroit;
     }
 
@@ -97,7 +93,6 @@ public class NoeudArbre {
      * @param noeudArbreDroit - Le nouvel arbre.
      */
     private void setNoeudArbreDroit(NoeudArbre noeudArbreDroit) {
-
         this.noeudArbreDroit = noeudArbreDroit;
     }
 
@@ -124,8 +119,7 @@ public class NoeudArbre {
      * @return true - Si le noeud est une feuille.
      */
     public boolean estUneFeuille(){
-
-        return noeud != null && noeudArbreGauche == null && noeudArbreDroit == null;
+        return noeudArbreGauche == null && noeudArbreDroit == null;
     }
 
     /**
@@ -133,13 +127,13 @@ public class NoeudArbre {
      * @return true - Si l'arbre est vide.
      */
     public boolean estVide(){
-
         return this.noeud == null;
     }
 
     /**
-     * Recherche de l'animal par l'ordinateur en fonction des réponses de l'utilisateur.
-     * A la fin, l'ordinateur propose un animal à l'utilisateur.
+     * Recherche de l'animal par l'utilisateur.
+     * On parcourt l'arbre suivant les réponses de l'utilisateur.
+     * A la fin l'ordinateur propose un animal en fonction des réponses de l'utilisateur.
      * @return true - Si l'ordinateur trouve l'animal.
      */
     public boolean rechercherAnimal(){
@@ -185,8 +179,6 @@ public class NoeudArbre {
 
         String dernierAnimal = null;
 
-        Scanner  scanner =  new Scanner(System.in);
-
         if(derniereFeuille != null) {
             dernierAnimal = derniereFeuille.getNoeud();
         }
@@ -210,8 +202,32 @@ public class NoeudArbre {
             derniereFeuille.setNoeudArbreDroit(new NoeudArbre(dernierAnimal));
             derniereFeuille.setNoeudArbreGauche(new NoeudArbre(nouvelAnimal));
         }
+    }
 
+    /**
+     * Permet de lancer le jeu à partir du premier noeud de l'arbre.
+     * Lorsque le jeu est terminé, on propose de rejouer.
+     */
+    public void jouer(String fichierDeSortie) {
+        String reponse;
+        do {
+            if (rechercherAnimal()) {
+                System.out.println("Trouvé !");
+            } else {
+                System.out.println("Perdu ! ");
+                apprendre();
+                if(fichierDeSortie != null) {
+                    ecrireFichier(fichierDeSortie, this);
+                }
+            }
+            System.out.println("Arbre complet : " + this.toString());
+            System.out.println("Voulez-vous rejouer ?");
+             reponse = saisieOuiNon();
 
+        }while(testOui(reponse));
+
+        System.out.println("**********Fin du Jeu***********");
+        System.out.println("\n       Merci d'avoir jouer");
     }
 
     /**
@@ -238,10 +254,7 @@ public class NoeudArbre {
      * @return La chaine de caractère correspondant à 'oui' ou 'non'.
      */
     private String saisieOuiNon(){
-        Scanner  scanner =  new Scanner(System.in);
-
         String reponse = null;
-
         do{
             if(reponse != null){
                 System.out.println("Merci de répondre par oui ou non : ");
@@ -283,25 +296,31 @@ public class NoeudArbre {
             }
         }
     }
+    static Stack<String> pile = new Stack<>();
 
     public String defini(String animal){
-
-        if(this.getNoeud().equals(animal)){
+        if(this.getNoeud().contains(animal)) {
             return " => " + this.getNoeud();
         }
-        if(this.getNoeudArbreGauche().estVide() && this.getNoeudArbreDroit().estVide()){
-            return " " + animal + "n'existe pas";
-        }
-        if(this.getNoeudArbreGauche().estUneFeuille() && !this.getNoeudArbreGauche().getNoeud().equals(animal)){
-            return " -> " + this.getNoeudArbreDroit().defini(animal);
-        }
-        if(this.getNoeudArbreDroit().estUneFeuille() && this.getNoeudArbreDroit().getNoeud().equals(animal)){
-            return " -> " + this.getNoeudArbreGauche().defini(animal);
-        }
-        return " " + animal + "n'existe pas";
-    }
 
-    static Stack<String> pile = new Stack<>();
+        if(this.getNoeudArbreGauche() != null && this.getNoeudArbreGauche().getNoeud().contains(animal)){
+            return this.getNoeud() + " -> " + " oui ; " + this.getNoeudArbreGauche().getNoeud();
+        }
+
+        if(this.getNoeudArbreDroit() != null && this.getNoeudArbreDroit().getNoeud().contains(animal)){
+            return this.getNoeud() + " -> " + " oui ; " + this.getNoeudArbreDroit().getNoeud();
+        }
+
+        if(this.getNoeudArbreGauche().estUneFeuille() && !this.getNoeudArbreGauche().getNoeud().contains(animal)){
+            return this.getNoeud() + " -> " + " oui ; " + this.getNoeudArbreDroit().defini(animal);
+        }
+
+        if(this.getNoeudArbreDroit().estUneFeuille() && !this.getNoeudArbreDroit().getNoeud().contains(animal)){
+            return this.getNoeud() + " -> " + " non ; " + this.getNoeudArbreGauche().defini(animal);
+        }
+
+        return " => pas d'animal";
+    }
 
     public boolean definir(String animal){
 
@@ -333,27 +352,68 @@ public class NoeudArbre {
         return false;
     }
 
-    /**
-     * Permet de lancer le jeu à partir du premier noeud de l'arbre.
-     * Lorsque le jeu est terminé, on propose de rejouer.
-     */
-    private void jouer() {
-        String reponse;
-        do {
-            if (rechercherAnimal()) {
-                System.out.println("Trouvé !");
-            } else {
-                System.out.println("Perdu ! ");
-                apprendre();
+    private static String lireTexte(String fichier){
+
+        BufferedReader lecteurAvecBuffer = null;
+        String text = "";
+        try
+        {
+            lecteurAvecBuffer = new BufferedReader(new FileReader(fichier));
+        }
+        catch(FileNotFoundException exc)
+        {
+            System.out.println("Erreur d'ouverture");
+        }
+
+        try {
+            String line = null;
+            do {
+                if (lecteurAvecBuffer != null) {
+                    line = lecteurAvecBuffer.readLine();
+                    if(line != null) {
+                        text += line;
+                    }
+                }
+            }while (line != null);
+
+            if (lecteurAvecBuffer != null) {
+                lecteurAvecBuffer.close();
             }
-            System.out.println("Arbre complet : " + this.toString());
-            System.out.println("Voulez-vous rejouer ?");
-            reponse = saisieOuiNon();
+        }catch (IOException e){
+            System.out.println("Erreur de lecture");
+        }
+        return text;
+    }
 
-        }while(testOui(reponse));
+    private static void ecrireFichier(String fichier, NoeudArbre noeudArbre){
 
-        System.out.println("**********Fin du Jeu***********");
-        System.out.println("\n       Merci d'avoir jouer");
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter(fichier);
+        } catch (FileNotFoundException e) {
+            System.out.println("Aucun fichier" + fichier);
+        }
+
+        if (writer != null) {
+            writer.println(noeudArbre);
+            writer.close();
+        }
+    }
+    private static String [] enleveEspace(String [] tableau){
+
+        ArrayList<String> liste = new ArrayList<>();
+        for(int i  = 0; i < tableau.length;i++){
+            if(!tableau[i].equals("") && !tableau[i].equals(" ")){
+                liste.add(tableau[i]);
+            }
+        }
+        String [] retour = new String[liste.size()];
+        int i = 0;
+        for(String s : liste){
+            retour[i] = s;
+            i++;
+        }
+        return retour;
     }
 
     public static void main(String[] args) {
@@ -378,12 +438,20 @@ public class NoeudArbre {
         }else{
 
             if(args[0].equals("--definir")){
-
                 n1.remplirArbre(args,2);
+                System.out.println("arbre = " + n1);
+                String animal = (String) args[1].subSequence(0,(args[1].length()));
+                System.out.println(n1.definir(animal));
+            }
+            if(args[0].contains("$(<")){
+                String fichierDentree = args[0].split("<")[1].substring(0,args[0].split("<")[1].length()-1);
+                String fichierDeSortie = args[1].split(">")[1];
+                String[] arbreTexte = lireTexte(fichierDentree).split("\"");
+                arbreTexte = enleveEspace(arbreTexte);
+                n1.remplirArbre(arbreTexte,0);
                 System.out.println(n1);
-                System.out.println(n1.defini((String) args[1].subSequence(0,(args[1].length()))));
-                System.out.println(pile);
-
+                ecrireFichier(fichierDeSortie,n1);
+                n1.jouer(fichierDeSortie);
             }else {
                 n1.remplirArbre(args,0);
                 System.out.println(n1);
@@ -391,6 +459,5 @@ public class NoeudArbre {
 
         }
 
-        //n1.jouer();
     }
 }
