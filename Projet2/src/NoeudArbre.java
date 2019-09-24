@@ -23,8 +23,6 @@ public class NoeudArbre {
      */
     private NoeudArbre noeudArbreDroit;
 
-    private Scanner  scanner =  new Scanner(System.in);
-
     private static NoeudArbre derniereFeuille;
 
     public NoeudArbre(){}
@@ -50,9 +48,11 @@ public class NoeudArbre {
         this.noeudArbreDroit = arbreDroit;
     }
     /**
+     * Récupère le noeud courrant.
      * @return La chaine de caractères représentant le noeud.
      */
     public String getNoeud() {
+
         return noeud;
     }
 
@@ -61,13 +61,16 @@ public class NoeudArbre {
      * @param noeud - La nouvelle chaine de caractère
      */
     public void setNoeud(String noeud) {
+
         this.noeud = noeud;
     }
 
     /**
+     * Récupère l'arbre gauche.
      * @return L'arbre gauche.
      */
     public NoeudArbre getNoeudArbreGauche() {
+
         return noeudArbreGauche;
     }
 
@@ -76,13 +79,16 @@ public class NoeudArbre {
      * @param noeudArbreGauche - Le nouvel arbre gauche.
      */
     public void setNoeudArbreGauche(NoeudArbre noeudArbreGauche) {
+
         this.noeudArbreGauche = noeudArbreGauche;
     }
 
     /**
+     * Récupère l'arbre droit.
      * @return L'arbre droit.
      */
     public NoeudArbre getNoeudArbreDroit() {
+
         return noeudArbreDroit;
     }
 
@@ -91,6 +97,7 @@ public class NoeudArbre {
      * @param noeudArbreDroit - Le nouvel arbre.
      */
     private void setNoeudArbreDroit(NoeudArbre noeudArbreDroit) {
+
         this.noeudArbreDroit = noeudArbreDroit;
     }
 
@@ -117,7 +124,8 @@ public class NoeudArbre {
      * @return true - Si le noeud est une feuille.
      */
     public boolean estUneFeuille(){
-        return noeudArbreGauche == null && noeudArbreDroit == null;
+
+        return noeud != null && noeudArbreGauche == null && noeudArbreDroit == null;
     }
 
     /**
@@ -125,13 +133,13 @@ public class NoeudArbre {
      * @return true - Si l'arbre est vide.
      */
     public boolean estVide(){
+
         return this.noeud == null;
     }
 
     /**
-     * Recherche de l'animal par l'utilisateur.
-     * On parcourt l'arbre suivant les réponses de l'utilisateur.
-     * A la fin l'ordinateur propose un animal en fonction des réponses de l'utilisateur.
+     * Recherche de l'animal par l'ordinateur en fonction des réponses de l'utilisateur.
+     * A la fin, l'ordinateur propose un animal à l'utilisateur.
      * @return true - Si l'ordinateur trouve l'animal.
      */
     public boolean rechercherAnimal(){
@@ -177,6 +185,8 @@ public class NoeudArbre {
 
         String dernierAnimal = null;
 
+        Scanner  scanner =  new Scanner(System.in);
+
         if(derniereFeuille != null) {
             dernierAnimal = derniereFeuille.getNoeud();
         }
@@ -205,29 +215,6 @@ public class NoeudArbre {
     }
 
     /**
-     * Permet de lancer le jeu à partir du premier noeud de l'arbre.
-     * Lorsque le jeu est terminé, on propose de rejouer.
-     */
-    public void jouer() {
-        String reponse;
-        do {
-            if (rechercherAnimal()) {
-                System.out.println("Trouvé !");
-            } else {
-                System.out.println("Perdu ! ");
-                apprendre();
-            }
-            System.out.println("Arbre complet : " + this.toString());
-            System.out.println("Voulez-vous rejouer ?");
-             reponse = saisieOuiNon();
-
-        }while(testOui(reponse));
-
-        System.out.println("**********Fin du Jeu***********");
-        System.out.println("\n       Merci d'avoir jouer");
-    }
-
-    /**
      * On teste une chaine de caractères afin qu'elle soit égale à oui / Oui / OUI
      * @param reponse - La chaine de caractères à tester.
      * @return true - Si la chaine de caractères correspond à oui/Oui/OUI
@@ -251,7 +238,10 @@ public class NoeudArbre {
      * @return La chaine de caractère correspondant à 'oui' ou 'non'.
      */
     private String saisieOuiNon(){
+        Scanner  scanner =  new Scanner(System.in);
+
         String reponse = null;
+
         do{
             if(reponse != null){
                 System.out.println("Merci de répondre par oui ou non : ");
@@ -343,6 +333,29 @@ public class NoeudArbre {
         return false;
     }
 
+    /**
+     * Permet de lancer le jeu à partir du premier noeud de l'arbre.
+     * Lorsque le jeu est terminé, on propose de rejouer.
+     */
+    private void jouer() {
+        String reponse;
+        do {
+            if (rechercherAnimal()) {
+                System.out.println("Trouvé !");
+            } else {
+                System.out.println("Perdu ! ");
+                apprendre();
+            }
+            System.out.println("Arbre complet : " + this.toString());
+            System.out.println("Voulez-vous rejouer ?");
+            reponse = saisieOuiNon();
+
+        }while(testOui(reponse));
+
+        System.out.println("**********Fin du Jeu***********");
+        System.out.println("\n       Merci d'avoir jouer");
+    }
+
     public static void main(String[] args) {
 
         NoeudArbre n1 = new NoeudArbre();
@@ -365,10 +378,12 @@ public class NoeudArbre {
         }else{
 
             if(args[0].equals("--definir")){
+
                 n1.remplirArbre(args,2);
                 System.out.println(n1);
                 System.out.println(n1.defini((String) args[1].subSequence(0,(args[1].length()))));
                 System.out.println(pile);
+
             }else {
                 n1.remplirArbre(args,0);
                 System.out.println(n1);

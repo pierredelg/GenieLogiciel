@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9ea17401-37fe-4287-8a2e-e659fe43dc3d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NoeudArbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NoeudArbre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TP2/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +23,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TP4" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TP2" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -73,6 +75,7 @@
       <workItem from="1569220142158" duration="430000" />
       <workItem from="1569237409714" duration="731000" />
       <workItem from="1569241159199" duration="112000" />
+      <workItem from="1569325329641" duration="1211000" />
     </task>
     <task id="LOCAL-00001" summary="defini">
       <created>1569238115496</created>
