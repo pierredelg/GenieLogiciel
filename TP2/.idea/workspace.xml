@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="694341e9-2b05-467f-a1eb-6fdd00b48efc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Projet2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Projet2/src/NoeudArbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet2/src/NoeudArbre.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP3/src/PileTableau.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP3/src/PileTableau.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +29,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Projet1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TP3" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -113,6 +116,7 @@
       <updated>1568120528851</updated>
       <workItem from="1568120529984" duration="7975000" />
       <workItem from="1568181871811" duration="1153000" />
+      <workItem from="1569325657088" duration="140000" />
     </task>
     <task id="LOCAL-00001" summary="ajout ex1 tp2">
       <created>1568122220850</created>
