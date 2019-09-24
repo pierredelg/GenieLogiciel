@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9ea17401-37fe-4287-8a2e-e659fe43dc3d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arbreInitial.txt" beforeDir="false" afterPath="$PROJECT_DIR$/arbreInitial.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arbreFinal.txt" beforeDir="false" afterPath="$PROJECT_DIR$/arbreFinal.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NoeudArbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NoeudArbre.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,7 +44,7 @@
     <configuration name="NoeudArbre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="NoeudArbre" />
       <module name="Projet 2" />
-      <option name="PROGRAM_PARAMETERS" value="--definir &quot;caniche&quot; &quot;Est-ce un mammifère ?&quot; &quot;Est-ce un crustacé ?&quot; &quot;Est-ce un poisson ?&quot; &quot;un aigle&quot; &quot;un thon&quot; &quot;Est-ce qu'il est brun ?&quot; &quot;une crevette&quot; &quot;un homard&quot; &quot;Est-ce qu’il aboie ?&quot; &quot;Est-ce qu'il miaule ?&quot; &quot;un lapin&quot; &quot;un chat&quot; &quot;Est-ce qu'il est grand ?&quot; &quot;un caniche&quot; &quot;un st-bernard&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="--definir &quot;caniche&quot; &quot;Est-ce un mammifère ?&quot; &quot;Est-ce un crustacé ?&quot; &quot;Est-ce un poisson ?&quot; &quot;un aigle&quot; &quot;un thon&quot; &quot;Est-ce qu'il est brun ?&quot; &quot;une crevette&quot; &quot;un homard&quot; &quot;Est-ce qu’il aboie ?&quot; &quot;Est-ce qu'il miaule ?&quot; &quot;un lapin&quot; &quot;un chat&quot; &quot;Est-ce qu'il est grand ?&quot; &quot;un caniche&quot; &quot;un st-bernard&quot; " />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -74,6 +74,7 @@
       <workItem from="1569066454982" duration="1732000" />
       <workItem from="1569178908173" duration="10627000" />
       <workItem from="1569255493743" duration="7749000" />
+      <workItem from="1569326756293" duration="7684000" />
     </task>
     <task id="LOCAL-00001" summary="definir animal">
       <created>1569191280013</created>
@@ -82,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569191280013</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Merge branch 'master' of https://git-iut.univ-lille1.fr/delgranp/genie-logiciel-da2i&#10;&#10;# Conflicts:&#10;#&#9;Projet2/.idea/workspace.xml&#10;#&#9;Projet2/src/NoeudArbre.java">
+      <created>1569326766647</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1569326766647</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,7 +111,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="definir animal" />
-    <option name="LAST_COMMIT_MESSAGE" value="definir animal" />
+    <MESSAGE value="Merge branch 'master' of https://git-iut.univ-lille1.fr/delgranp/genie-logiciel-da2i&#10;&#10;# Conflicts:&#10;#&#9;Projet2/.idea/workspace.xml&#10;#&#9;Projet2/src/NoeudArbre.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://git-iut.univ-lille1.fr/delgranp/genie-logiciel-da2i&#10;&#10;# Conflicts:&#10;#&#9;Projet2/.idea/workspace.xml&#10;#&#9;Projet2/src/NoeudArbre.java" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Projet2$NoeudArbre.ic" NAME="NoeudArbre Coverage Results" MODIFIED="1569067698048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
