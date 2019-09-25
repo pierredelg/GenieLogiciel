@@ -1,7 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Stack;
 
 /**
  * Représentation d'un arbre binaire de chaine de caractères
@@ -24,8 +23,6 @@ public class NoeudArbre {
      * Arbre droit.
      */
     private NoeudArbre noeudArbreDroit;
-
-    private Scanner  scanner =  new Scanner(System.in);
 
     private static NoeudArbre derniereFeuille;
 
@@ -51,50 +48,6 @@ public class NoeudArbre {
         this.noeudArbreGauche = arbreGauche;
         this.noeudArbreDroit = arbreDroit;
     }
-    /**
-     * @return La chaine de caractères représentant le noeud.
-     */
-    public String getNoeud() {
-        return noeud;
-    }
-
-    /**
-     * Modifie la chaine de caractères représentant le noeud.
-     * @param noeud - La nouvelle chaine de caractère
-     */
-    public void setNoeud(String noeud) {
-        this.noeud = noeud;
-    }
-
-    /**
-     * @return L'arbre gauche.
-     */
-    public NoeudArbre getNoeudArbreGauche() {
-        return noeudArbreGauche;
-    }
-
-    /**
-     * Modifie l'arbre gauche avec un nouvel arbre.
-     * @param noeudArbreGauche - Le nouvel arbre gauche.
-     */
-    public void setNoeudArbreGauche(NoeudArbre noeudArbreGauche) {
-        this.noeudArbreGauche = noeudArbreGauche;
-    }
-
-    /**
-     * @return L'arbre droit.
-     */
-    public NoeudArbre getNoeudArbreDroit() {
-        return noeudArbreDroit;
-    }
-
-    /**
-     * Modifie l'arbre droit avec un nouvel arbre.
-     * @param noeudArbreDroit - Le nouvel arbre.
-     */
-    private void setNoeudArbreDroit(NoeudArbre noeudArbreDroit) {
-        this.noeudArbreDroit = noeudArbreDroit;
-    }
 
     /**
      * Affichage de chaque noeud de l'arbre en préfixe (Noeud central, Noeud Gauche , Noeud Droit)
@@ -119,7 +72,7 @@ public class NoeudArbre {
      * @return true - Si le noeud est une feuille.
      */
     public boolean estUneFeuille(){
-        return this.getNoeud() != null && this.getNoeudArbreGauche() == null && this.getNoeudArbreDroit() == null;
+        return noeud != null && noeudArbreGauche == null && noeudArbreDroit == null;
     }
 
     /**
@@ -127,7 +80,7 @@ public class NoeudArbre {
      * @return true - Si l'arbre est vide.
      */
     public boolean estVide(){
-        return this.noeud == null;
+        return noeud == null;
     }
 
     /**
@@ -141,9 +94,9 @@ public class NoeudArbre {
         String reponse;
 
         if(estUneFeuille()) {
-            System.out.println("Est-ce " + this.noeud + " ?");
+            System.out.println("Est-ce " + noeud + " ?");
         }else{
-            System.out.println(this.noeud);
+            System.out.println(noeud);
         }
         reponse = saisieOuiNon();
 
@@ -155,12 +108,12 @@ public class NoeudArbre {
             return false;
         }
 
-        if(getNoeudArbreGauche() != null && testNon(reponse)){
-            return getNoeudArbreGauche().rechercherAnimal();
+        if(noeudArbreGauche != null && testNon(reponse)){
+            return noeudArbreGauche.rechercherAnimal();
         }
 
-        if(getNoeudArbreDroit() != null && testOui(reponse)){
-            return getNoeudArbreDroit().rechercherAnimal();
+        if(noeudArbreDroit != null && testOui(reponse)){
+            return noeudArbreDroit.rechercherAnimal();
         }
         return false;
 
@@ -177,10 +130,12 @@ public class NoeudArbre {
      */
     public void apprendre(){
 
+        Scanner  scanner =  new Scanner(System.in);
+
         String dernierAnimal = null;
 
         if(derniereFeuille != null) {
-            dernierAnimal = derniereFeuille.getNoeud();
+            dernierAnimal = derniereFeuille.noeud;
         }
 
         System.out.println("Qu’est-ce que c’est ?");
@@ -189,68 +144,19 @@ public class NoeudArbre {
 
         System.out.println( nouvelAnimal  + " ! Je ne connais pas cet animal. Donnez-moi une question qui permette de différencier " + nouvelAnimal +  " d’ " + derniereFeuille + " ?");
         String nouvelleQuestion = scanner.nextLine();
-        derniereFeuille.setNoeud(nouvelleQuestion);
+        derniereFeuille.noeud = nouvelleQuestion;
 
         System.out.println("Quelle doit être la réponse pour " + nouvelAnimal + " ?");
         String nouvelleReponse = saisieOuiNon();
 
         if(testOui(nouvelleReponse)) {
-            derniereFeuille.setNoeudArbreDroit(new NoeudArbre(nouvelAnimal));
-            derniereFeuille.setNoeudArbreGauche(new NoeudArbre(dernierAnimal));
+            derniereFeuille.noeudArbreDroit = new NoeudArbre(nouvelAnimal);
+            derniereFeuille.noeudArbreGauche = new NoeudArbre(dernierAnimal);
         }
         if(testNon(nouvelleReponse)){
-            derniereFeuille.setNoeudArbreDroit(new NoeudArbre(dernierAnimal));
-            derniereFeuille.setNoeudArbreGauche(new NoeudArbre(nouvelAnimal));
+            derniereFeuille.noeudArbreDroit = new NoeudArbre(dernierAnimal);
+            derniereFeuille.noeudArbreGauche = new NoeudArbre(nouvelAnimal);
         }
-    }
-
-    /**
-     * Permet d'afficher le chemin vers le noeud donné en parametre.
-     * @param animal - L'animal donné en parametre.
-     * @return la chaine de carctères avec le chemin trouvé.
-     */
-    public String defini(String animal){
-
-        if(this.getNoeud().contains(animal)) {
-            return " => " + this.getNoeud();
-        }
-        if(this.getNoeudArbreGauche() != null && this.getNoeudArbreDroit() != null) {
-
-            if(this.getNoeudArbreGauche().getNoeud().contains(animal)){
-                return this.getNoeud() + " -> " + " non ; " + this.getNoeudArbreGauche().getNoeud();
-            }
-
-            if(this.getNoeudArbreDroit().getNoeud().contains(animal)){
-                return this.getNoeud() + " -> " + " oui ; " + this.getNoeudArbreDroit().getNoeud();
-            }
-
-            if (this.getNoeudArbreGauche().estUneFeuille() && !this.getNoeudArbreGauche().getNoeud().contains(animal)) {
-                return this.getNoeud() + " -> " + " oui ; " + this.getNoeudArbreDroit().defini(animal);
-            }
-
-            if (this.getNoeudArbreDroit().estUneFeuille() && !this.getNoeudArbreDroit().getNoeud().contains(animal)) {
-                return this.getNoeud() + " -> " + " non ; " + this.getNoeudArbreGauche().defini(animal);
-            }
-        }
-        return " => pas d'animal";
-    }
-    public String test(){
-        Stack<NoeudArbre> pile = new Stack<>();
-        NoeudArbre noeud = this;
-        String result = "";
-        while(!noeud.estVide() || !pile.empty()){
-            if(noeud.estVide()){
-                noeud = pile.pop();
-            }
-            else{
-                result += noeud.getNoeud();
-                if(!noeud.getNoeudArbreDroit().estVide()){
-                    pile.push(noeud.getNoeudArbreDroit());
-                }
-                noeud = noeud.getNoeudArbreGauche();
-            }
-        }
-        return result;
     }
 
     /**
@@ -266,7 +172,7 @@ public class NoeudArbre {
                 System.out.println("Perdu ! ");
                 apprendre();
                 if(fichierDeSortie != null) {
-                    ecrireFichier(fichierDeSortie, this);
+                    //ecrireFichier(fichierDeSortie, this);
                 }
             }
             System.out.println("Arbre complet : " + this.toString());
@@ -303,6 +209,8 @@ public class NoeudArbre {
      * @return La chaine de caractère correspondant à 'oui' ou 'non'.
      */
     private String saisieOuiNon(){
+        Scanner  scanner =  new Scanner(System.in);
+
         String reponse = null;
         do{
             if(reponse != null){
@@ -341,92 +249,46 @@ public class NoeudArbre {
                 if (this.noeudArbreDroit == null) {
                     this.noeudArbreDroit = new NoeudArbre(parametre);
                 }else{
-                        this.noeudArbreDroit.ajouterUnElement(parametre);
+                    this.noeudArbreDroit.ajouterUnElement(parametre);
                 }
             }
         }
     }
 
     /**
-     * Permet de lire dans un fichier texte.
-     * @param fichier - Le chemin du fichier.
-     * @return La chaine de caractères contenant l'arbre.
+     * Permet d'afficher le chemin vers le noeud donné en parametre.
+     * @param animal - L'animal donné en parametre.
+     * @return la chaine de carctères avec le chemin trouvé.
      */
-    private String lireTexte(String fichier){
+    public String defini(String animal){
 
-        BufferedReader lecteurAvecBuffer = null;
-        String text = "";
-        try
-        {
-            lecteurAvecBuffer = new BufferedReader(new FileReader(fichier));
+        if(this.noeud.contains(animal)) {
+            return " => " + this.noeud;
         }
-        catch(FileNotFoundException exc)
-        {
-            System.out.println("Erreur d'ouverture");
-        }
+        if(this.noeudArbreGauche != null && this.noeudArbreDroit != null) {
 
-        try {
-            String line = null;
-            do {
-                if (lecteurAvecBuffer != null) {
-                    line = lecteurAvecBuffer.readLine();
-                    if(line != null) {
-                        text += line;
-                    }
-                }
-            }while (line != null);
-
-            if (lecteurAvecBuffer != null) {
-                lecteurAvecBuffer.close();
+            if(this.noeudArbreGauche.noeud.contains(animal)){
+                return this.noeud + " -> " + " non ; " + this.noeudArbreGauche.noeud;
             }
-        }catch (IOException e){
-            System.out.println("Erreur de lecture");
-        }
-        return text;
-    }
 
-    /**
-     * Permet l'écriture dans un fichier texte.
-     * @param fichier - Le chemin du fichier.
-     * @param noeudArbre - L'arbre à enregistrer dans le fichier.
-     */
-    private void ecrireFichier(String fichier, NoeudArbre noeudArbre){
+            if(this.noeudArbreDroit.noeud.contains(animal)){
+                return this.noeud + " -> " + " oui ; " + this.noeudArbreDroit.noeud;
+            }
 
-        FileWriter fw;
+            if (this.noeudArbreGauche.estUneFeuille() && !this.noeudArbreGauche.noeud.contains(animal)) {
+                return this.noeud + " -> " + " oui ; " + this.noeudArbreDroit.defini(animal);
+            }
 
-        try {
-            fw = new FileWriter(fichier);
-            fw.write(noeudArbre.toString());
-            fw.close();
-
-        }catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Méthode permettant de formater le tableau provenant du fichier en supprimant les guillemets et les espaces
-     * @param tableau - le tableau provenant du fichier.
-     * @return  Le tableau contenant un noeud par indice.
-     */
-    private String [] enleveEspace(String [] tableau){
-
-        ArrayList<String> liste = new ArrayList<>();
-        for(int i  = 0; i < tableau.length;i++){
-            if(!tableau[i].equals("") && !tableau[i].equals(" ")){
-                liste.add(tableau[i]);
+            if (this.noeudArbreDroit.estUneFeuille() && !this.noeudArbreDroit.noeud.contains(animal)) {
+                return this.noeud + " -> " + " non ; " + this.noeudArbreGauche.defini(animal);
             }
         }
-        String [] retour = new String[liste.size()];
-        int i = 0;
-        for(String s : liste){
-            retour[i] = s;
-            i++;
-        }
-        return retour;
+        return " => pas d'animal";
+    }
+
+    private String enleveGuillemet(String chaine){
+        //chaine.substring()
+        return null;
     }
 
     public static void main(String[] args) {
@@ -434,55 +296,49 @@ public class NoeudArbre {
         NoeudArbre n1 = new NoeudArbre();
 
         if(args.length == 0) {
-
-            n1 = new NoeudArbre("Est-ce un mammifère ?");
-            NoeudArbre n2 = new NoeudArbre("un crocodile");
-            NoeudArbre n3 = new NoeudArbre("Est-ce qu'il aboie ?");
-
-            n1.setNoeudArbreGauche(n2);
-            n1.setNoeudArbreDroit(n3);
-
-            NoeudArbre n4 = new NoeudArbre("un cheval");
-            NoeudArbre n5 = new NoeudArbre("un chien");
-
-            n3.setNoeudArbreGauche(n4);
-            n3.setNoeudArbreDroit(n5);
-
-        }else{
-
-            if(args[0].equals("--definir")){
-
-                n1.remplirArbre(args,2);
-                System.out.println("arbre = " + n1);
-                String animal = (String) args[1].subSequence(0,(args[1].length()));
-                System.out.println(n1.test());
-                System.out.println(n1.defini(animal));
-            }
-            if(args[0].contains(".txt")){
-
-                String fichierDentree = args[0].split("<")[1].substring(0,args[0].split("<")[1].length()-1);
-                String fichierDeSortie = args[1].split(">")[1];
-                String[] arbreTexte = n1.lireTexte(fichierDentree).split("\"");
-                arbreTexte = n1.enleveEspace(arbreTexte);
-                n1.remplirArbre(arbreTexte,0);
-                try {
-                    System.setErr(new PrintStream(new FileOutputStream(new File(fichierDeSortie))));
-                } catch (FileNotFoundException e) {
-                    System.out.println("Fichier introuvable");
-                }
-                System.err.println(n1);
-                System.out.println(n1);
-                n1.ecrireFichier(fichierDeSortie,n1);
-                n1.jouer(fichierDeSortie);
-            }else {
-
-                n1.remplirArbre(args,0);
-                System.out.println(n1);
-            }
-
-            //$(<arbreInitial.txt) 2>arbreFinal.txt
-            //--definir "caniche" "Est-ce un mammifère ?" "Est-ce un crustacé ?" "Est-ce un poisson ?" "un aigle" "un thon" "Est-ce qu'il est brun ?" "une crevette" "un homard" "Est-ce qu’il aboie ?" "Est-ce qu'il miaule ?" "un lapin" "un chat" "Est-ce qu'il est grand ?" "un caniche" "un st-bernard"
+            String [] arbre = {"Est-ce un mammifère","un crocodile","Est-ce qu'il aboie ?","un cheval","un chien"};
         }
+
+        if(args[0].equals("--definir")){
+
+            n1.remplirArbre(args,2);
+
+            //On récupere l'animal en deuxieme parametre sans les guillemets
+            String animal = (String) args[1].subSequence(0,(args[1].length()));
+
+            //On affiche le résultat du chemin trouvé par définir
+            System.out.println(n1.defini(animal));
+        }
+        System.out.println(args[0]);
+        System.out.println(args[1]);
+        System.out.println(args[args.length -1]);
+
+        System.err.println(n1);
+
+        if(args[0].contains(".txt")){
+
+          /*  String fichierDentree = args[0].split("<")[1].substring(0,args[0].split("<")[1].length()-1);
+            String fichierDeSortie = args[1].split(">")[1];
+            String[] arbreTexte = n1.lireTexte(fichierDentree).split("\"");
+            arbreTexte = n1.enleveEspace(arbreTexte);
+            n1.remplirArbre(arbreTexte,0);
+            try {
+                System.setErr(new PrintStream(new FileOutputStream(new File(fichierDeSortie))));
+            } catch (FileNotFoundException e) {
+                System.out.println("Fichier introuvable");
+            }
+            System.err.println(n1);
+            System.out.println(n1);
+            n1.ecrireFichier(fichierDeSortie,n1);*/
+        }
+
+      /*  n1.remplirArbre(args,0);
+        System.out.println(n1);
+
+        n1.jouer(null);
+*/
+        //$(<arbreInitial.txt) 2>arbreFinal.txt
+        //--definir "caniche" "Est-ce un mammifère ?" "Est-ce un crustacé ?" "Est-ce un poisson ?" "un aigle" "un thon" "Est-ce qu'il est brun ?" "une crevette" "un homard" "Est-ce qu’il aboie ?" "Est-ce qu'il miaule ?" "un lapin" "un chat" "Est-ce qu'il est grand ?" "un caniche" "un st-bernard"
 
     }
 }
