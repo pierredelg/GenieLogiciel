@@ -24,8 +24,6 @@ public class NoeudArbre {
      */
     private NoeudArbre noeudArbreDroit;
 
-    private Scanner  scanner =  new Scanner(System.in);
-
     private static NoeudArbre derniereFeuille;
 
     public NoeudArbre(){}
@@ -49,50 +47,6 @@ public class NoeudArbre {
         this.noeud = noeud;
         this.noeudArbreGauche = arbreGauche;
         this.noeudArbreDroit = arbreDroit;
-    }
-    /**
-     * @return La chaine de caractères représentant le noeud.
-     */
-    public String getNoeud() {
-        return noeud;
-    }
-
-    /**
-     * Modifie la chaine de caractères représentant le noeud.
-     * @param noeud - La nouvelle chaine de caractère
-     */
-    public void setNoeud(String noeud) {
-        this.noeud = noeud;
-    }
-
-    /**
-     * @return L'arbre gauche.
-     */
-    public NoeudArbre getNoeudArbreGauche() {
-        return noeudArbreGauche;
-    }
-
-    /**
-     * Modifie l'arbre gauche avec un nouvel arbre.
-     * @param noeudArbreGauche - Le nouvel arbre gauche.
-     */
-    public void setNoeudArbreGauche(NoeudArbre noeudArbreGauche) {
-        this.noeudArbreGauche = noeudArbreGauche;
-    }
-
-    /**
-     * @return L'arbre droit.
-     */
-    public NoeudArbre getNoeudArbreDroit() {
-        return noeudArbreDroit;
-    }
-
-    /**
-     * Modifie l'arbre droit avec un nouvel arbre.
-     * @param noeudArbreDroit - Le nouvel arbre.
-     */
-    private void setNoeudArbreDroit(NoeudArbre noeudArbreDroit) {
-        this.noeudArbreDroit = noeudArbreDroit;
     }
 
     /**
@@ -118,7 +72,7 @@ public class NoeudArbre {
      * @return true - Si le noeud est une feuille.
      */
     public boolean estUneFeuille(){
-        return this.getNoeud() != null && this.getNoeudArbreGauche() == null && this.getNoeudArbreDroit() == null;
+        return noeud != null && noeudArbreGauche == null && noeudArbreDroit == null;
     }
 
     /**
@@ -126,7 +80,7 @@ public class NoeudArbre {
      * @return true - Si l'arbre est vide.
      */
     public boolean estVide(){
-        return this.noeud == null;
+        return noeud == null;
     }
 
     /**
@@ -140,9 +94,9 @@ public class NoeudArbre {
         String reponse;
 
         if(estUneFeuille()) {
-            System.out.println("Est-ce " + this.noeud + " ?");
+            System.out.println("Est-ce " + noeud + " ?");
         }else{
-            System.out.println(this.noeud);
+            System.out.println(noeud);
         }
         reponse = saisieOuiNon();
 
@@ -154,12 +108,12 @@ public class NoeudArbre {
             return false;
         }
 
-        if(getNoeudArbreGauche() != null && testNon(reponse)){
-            return getNoeudArbreGauche().rechercherAnimal();
+        if(noeudArbreGauche != null && testNon(reponse)){
+            return noeudArbreGauche.rechercherAnimal();
         }
 
-        if(getNoeudArbreDroit() != null && testOui(reponse)){
-            return getNoeudArbreDroit().rechercherAnimal();
+        if(noeudArbreDroit != null && testOui(reponse)){
+            return noeudArbreDroit.rechercherAnimal();
         }
         return false;
 
@@ -176,10 +130,12 @@ public class NoeudArbre {
      */
     public void apprendre(){
 
+        Scanner  scanner =  new Scanner(System.in);
+
         String dernierAnimal = null;
 
         if(derniereFeuille != null) {
-            dernierAnimal = derniereFeuille.getNoeud();
+            dernierAnimal = derniereFeuille.noeud;
         }
 
         System.out.println("Qu’est-ce que c’est ?");
@@ -188,18 +144,18 @@ public class NoeudArbre {
 
         System.out.println( nouvelAnimal  + " ! Je ne connais pas cet animal. Donnez-moi une question qui permette de différencier " + nouvelAnimal +  " d’ " + derniereFeuille + " ?");
         String nouvelleQuestion = scanner.nextLine();
-        derniereFeuille.setNoeud(nouvelleQuestion);
+        derniereFeuille.noeud = nouvelleQuestion;
 
         System.out.println("Quelle doit être la réponse pour " + nouvelAnimal + " ?");
         String nouvelleReponse = saisieOuiNon();
 
         if(testOui(nouvelleReponse)) {
-            derniereFeuille.setNoeudArbreDroit(new NoeudArbre(nouvelAnimal));
-            derniereFeuille.setNoeudArbreGauche(new NoeudArbre(dernierAnimal));
+            derniereFeuille.noeudArbreDroit = new NoeudArbre(nouvelAnimal);
+            derniereFeuille.noeudArbreGauche = new NoeudArbre(dernierAnimal);
         }
         if(testNon(nouvelleReponse)){
-            derniereFeuille.setNoeudArbreDroit(new NoeudArbre(dernierAnimal));
-            derniereFeuille.setNoeudArbreGauche(new NoeudArbre(nouvelAnimal));
+            derniereFeuille.noeudArbreDroit = new NoeudArbre(dernierAnimal);
+            derniereFeuille.noeudArbreGauche = new NoeudArbre(nouvelAnimal);
         }
     }
 
@@ -291,7 +247,7 @@ public class NoeudArbre {
                 if (this.noeudArbreDroit == null) {
                     this.noeudArbreDroit = new NoeudArbre(parametre);
                 }else{
-                        this.noeudArbreDroit.ajouterUnElement(parametre);
+                    this.noeudArbreDroit.ajouterUnElement(parametre);
                 }
             }
         }
