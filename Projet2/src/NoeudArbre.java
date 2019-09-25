@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Stack;
 
 /**
  * Représentation d'un arbre binaire de chaine de caractères
@@ -204,6 +205,55 @@ public class NoeudArbre {
     }
 
     /**
+     * Permet d'afficher le chemin vers le noeud donné en parametre.
+     * @param animal - L'animal donné en parametre.
+     * @return la chaine de carctères avec le chemin trouvé.
+     */
+    public String defini(String animal){
+
+        if(this.getNoeud().contains(animal)) {
+            return " => " + this.getNoeud();
+        }
+        if(this.getNoeudArbreGauche() != null && this.getNoeudArbreDroit() != null) {
+
+            if(this.getNoeudArbreGauche().getNoeud().contains(animal)){
+                return this.getNoeud() + " -> " + " non ; " + this.getNoeudArbreGauche().getNoeud();
+            }
+
+            if(this.getNoeudArbreDroit().getNoeud().contains(animal)){
+                return this.getNoeud() + " -> " + " oui ; " + this.getNoeudArbreDroit().getNoeud();
+            }
+
+            if (this.getNoeudArbreGauche().estUneFeuille() && !this.getNoeudArbreGauche().getNoeud().contains(animal)) {
+                return this.getNoeud() + " -> " + " oui ; " + this.getNoeudArbreDroit().defini(animal);
+            }
+
+            if (this.getNoeudArbreDroit().estUneFeuille() && !this.getNoeudArbreDroit().getNoeud().contains(animal)) {
+                return this.getNoeud() + " -> " + " non ; " + this.getNoeudArbreGauche().defini(animal);
+            }
+        }
+        return " => pas d'animal";
+    }
+    public String test(){
+        Stack<NoeudArbre> pile = new Stack<>();
+        NoeudArbre noeud = this;
+        String result = "";
+        while(!noeud.estVide() || !pile.empty()){
+            if(noeud.estVide()){
+                noeud = pile.pop();
+            }
+            else{
+                result += noeud.getNoeud();
+                if(!noeud.getNoeudArbreDroit().estVide()){
+                    pile.push(noeud.getNoeudArbreDroit());
+                }
+                noeud = noeud.getNoeudArbreGauche();
+            }
+        }
+        return result;
+    }
+
+    /**
      * Permet de lancer le jeu à partir du premier noeud de l'arbre.
      * Lorsque le jeu est terminé, on propose de rejouer.
      */
@@ -295,37 +345,6 @@ public class NoeudArbre {
                 }
             }
         }
-    }
-
-    /**
-     * Permet d'afficher le chemin vers le noeud donné en parametre.
-     * @param animal - L'animal donné en parametre.
-     * @return la chaine de carctères avec le chemin trouvé.
-     */
-    public String defini(String animal){
-
-        if(this.getNoeud().contains(animal)) {
-            return " => " + this.getNoeud();
-        }
-        if(this.getNoeudArbreGauche() != null && this.getNoeudArbreDroit() != null) {
-
-            if(this.getNoeudArbreGauche().getNoeud().contains(animal)){
-                return this.getNoeud() + " -> " + " non ; " + this.getNoeudArbreGauche().getNoeud();
-            }
-
-            if(this.getNoeudArbreDroit().getNoeud().contains(animal)){
-                return this.getNoeud() + " -> " + " oui ; " + this.getNoeudArbreDroit().getNoeud();
-            }
-
-            if (this.getNoeudArbreGauche().estUneFeuille() && !this.getNoeudArbreGauche().getNoeud().contains(animal)) {
-                return this.getNoeud() + " -> " + " oui ; " + this.getNoeudArbreDroit().defini(animal);
-            }
-
-            if (this.getNoeudArbreDroit().estUneFeuille() && !this.getNoeudArbreDroit().getNoeud().contains(animal)) {
-                return this.getNoeud() + " -> " + " non ; " + this.getNoeudArbreGauche().defini(animal);
-            }
-        }
-        return " => pas d'animal";
     }
 
     /**
@@ -436,6 +455,7 @@ public class NoeudArbre {
                 n1.remplirArbre(args,2);
                 System.out.println("arbre = " + n1);
                 String animal = (String) args[1].subSequence(0,(args[1].length()));
+                System.out.println(n1.test());
                 System.out.println(n1.defini(animal));
             }
             if(args[0].contains(".txt")){
