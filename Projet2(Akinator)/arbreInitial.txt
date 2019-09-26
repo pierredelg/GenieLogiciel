@@ -1,1 +1,0 @@
-"Est-ce un mammifère ?" "Est-ce un crustacé ?" "Est-ce un poisson ?" "un aigle" "un thon" "Est-ce qu'il est brun ?" "une crevette" "un homard" "Est-ce qu’il aboie ?" "Est-ce qu'il miaule ?" "un lapin" "un chat" "Est-ce qu'il est grand ?" "un caniche" "un st-bernard"
