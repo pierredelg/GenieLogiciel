@@ -3,7 +3,7 @@ public interface Pile<E> {
 
     /** Nombre maximal d'éléments pouvant être placés dans les instances 
      * des classes implémentant Pile (constante de classe) */
-     int MAX_ELEMENTS = 12 ;
+     int MAX_ELEMENTS = 100 ;
 
     /** Teste si la pile est vide */
     boolean vide() ;
