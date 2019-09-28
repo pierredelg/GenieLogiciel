@@ -1,14 +1,21 @@
 Les interfaces: Les Tours de Hanoï
+==================================
+<br>
 Projet 3 / GL / LP DA2I / semestre 1
+====================================
+<br>
 La légende des Tours de Hanoï
-Une légende raconte qu’on trouve à Hanoï un temple bouddhiste très ancien, dans lequel se dressent trois mâts d’airain. Sur l’un de ces mâts sont enfilés soixante-quatre disques de jade formant une pyramide.
+=============================
+<br><br>
+<p>Une légende raconte qu’on trouve à Hanoï un temple bouddhiste très ancien, dans lequel se dressent trois mâts d’airain. Sur l’un de ces mâts sont enfilés soixante-quatre disques de jade formant une pyramide.<p>
 
-Les bonzes qui s’affairent dans le temple doivent déplacer tous les disques du premier mât vers celui du milieu, en obéissant à des règles simples:
-
-seul un disque du sommet d’une pile peut être déplacé;
-on ne peut déplacer qu’un disque à la fois;
-un disque ne peut être posé que sur un disque plus grand ou dans une pile vide;
-à tout moment, on peut déplacer un disque de n’importe quelle pile vers n’importe quelle autre pourvu qu’on respecte toutes les règles ci-dessus.
+<p>Les bonzes qui s’affairent dans le temple doivent déplacer tous les disques du premier mât vers celui du milieu, en obéissant à des règles simples:<p>
+<ul>
+<li>seul un disque du sommet d’une pile peut être déplacé;</li>
+<li>on ne peut déplacer qu’un disque à la fois;</li>
+<li>un disque ne peut être posé que sur un disque plus grand ou dans une pile vide;</li>
+<li>à tout moment, on peut déplacer un disque de n’importe quelle pile vers n’importe quelle autre pourvu qu’on respecte toutes les règles ci-dessus.</li>
+</ul>
 Lorsqu’ils auront terminé, dit la légende, ce sera la fin du monde.
 
 Informatisons les Tours de Hanoï!
