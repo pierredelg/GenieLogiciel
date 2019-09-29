@@ -27,6 +27,11 @@ public class PileHanoi implements Pile<Disque> {
     private Affichage algoAffichage = new AffichageSimple();
 
     /**
+     * Nombre de déplacements expérimentals.
+     */
+    private static int nombreDeDeplacementExperimental = 0;
+
+    /**
      * Contructeur de la pile de Hanoi en renseignant uniquement le nom.
      * Peut contenir au maximum le MAX_ELEMENTS de l'interface Pile.
      * @param nom - Chaine de caractères représantant le nom de la pile.
@@ -54,6 +59,14 @@ public class PileHanoi implements Pile<Disque> {
      */
     public String getNom() {
         return nom;
+    }
+
+    /**
+     * Le nombre de déplacements calculé de façon expérimental.
+     * @return - Le nombre de déplacements.
+     */
+    public static int getNombreDeDeplacementExperimental() {
+        return nombreDeDeplacementExperimental;
     }
 
     /**
@@ -166,8 +179,12 @@ public class PileHanoi implements Pile<Disque> {
     @Override
     public void deplacerUnElementVers(Pile<Disque> pile) {
         if(pile.peutEmpiler(sommet())) {
+
             pile.empile(sommet());
             this.depile();
+
+            //On ajoute un déplacement au nombre de déplacements
+            nombreDeDeplacementExperimental++;
         }
     }
 
