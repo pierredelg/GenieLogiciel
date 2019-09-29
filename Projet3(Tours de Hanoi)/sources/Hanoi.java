@@ -39,7 +39,7 @@ public class Hanoi
 	return c ;
     }
     public static void nombreDeDepacementTheorique(int nombreDeDisque){
-		System.out.println("Le nombre de déplacements théoriques pour "+ nombreDeDisque +" disques est de " + (Math.pow(2, nombreDeDisque) - 1) + " déplacements.");
+		System.out.println("Le nombre de déplacements théorique pour "+ nombreDeDisque +" disques est de " + (Math.pow(2, nombreDeDisque) - 1) + " déplacements.");
 	}
 
 	public static void resoudreAuto(PileHanoi a, PileHanoi b, PileHanoi c){

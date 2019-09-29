@@ -183,7 +183,7 @@ public class PileHanoi implements Pile<Disque> {
             pile.empile(sommet());
             this.depile();
 
-            //On ajoute un déplacement au nombre de déplacements
+            //On ajoute un déplacement au nombre de déplacements expérimental.
             nombreDeDeplacementExperimental++;
         }
     }
