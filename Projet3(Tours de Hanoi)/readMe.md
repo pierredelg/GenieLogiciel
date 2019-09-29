@@ -2,10 +2,10 @@ Les interfaces: Les Tours de Hanoï
 ==================================
 <br>
 Projet 3 / GL / LP DA2I / semestre 1
-====================================
+------------------------------------
 <br>
 La légende des Tours de Hanoï
-=============================
+-----------------------------
 <br><br>
 <p>Une légende raconte qu’on trouve à Hanoï un temple bouddhiste très ancien, dans lequel se dressent trois mâts d’airain. Sur l’un de ces mâts sont enfilés soixante-quatre disques de jade formant une pyramide.<p>
 

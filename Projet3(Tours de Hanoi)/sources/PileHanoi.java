@@ -172,12 +172,12 @@ public class PileHanoi implements Pile<Disque> {
     }
 
     /**
-     * On déplace les disques
-     * @param numeroDeDisque
-     * @param pileDestination
-     * @param pileIntermediaire
+     * On déplace les disques de la pile de départ vers la pile de destination en passant si besoin par une pile
+     * intermédiaire.
+     * @param numeroDeDisque - Le nombre de disque.
+     * @param pileDestination - La pile de destination.
+     * @param pileIntermediaire - la pile intermédiaire.
      */
-    //todo finir commentaire
     public void deplacerDesDisques(int numeroDeDisque, Pile pileDestination, Pile pileIntermediaire){
         PileHanoi intermHanoi = (PileHanoi) pileIntermediaire;
         PileHanoi destHanoi = (PileHanoi) pileDestination;
@@ -198,5 +198,4 @@ public class PileHanoi implements Pile<Disque> {
             intermHanoi.deplacerDesDisques(numeroDeDisque-1, destHanoi, this);
         }
     }
-    //todo faire une méthode comptant le nombre de déplacements effectués.
 }
