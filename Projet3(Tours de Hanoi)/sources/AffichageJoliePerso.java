@@ -3,7 +3,7 @@
  */
 public class AffichageJoliePerso implements Affichage{
     /**
-     * Le motif de représentation. De base le motif est : *
+     * Le motif de représentation. De base le motif est : =
      *
      * */
     private char motif;
@@ -12,7 +12,7 @@ public class AffichageJoliePerso implements Affichage{
      * Constructeur simple avec le motif de base.
      */
     public AffichageJoliePerso(){
-        this.motif = '*';
+        this.motif = '=';
     }
 
     /**
@@ -36,13 +36,15 @@ public class AffichageJoliePerso implements Affichage{
 
         //On initialise le résultat par un passage à la ligne.
         String resultat = "\n";
+        //On ajoute le nombre d'espaces nécessaire pour centrer le sommet du mat
         resultat += ajouterEspaceDepart(diametreMax(d), 0);
+        //On ajoute le sommet du mat de la tour
         resultat += " |\n";
 
-        //On parcourt le tableau de Disque de la fin au debut.
+        //On parcourt le tableau de Disque de la fin au debut
         for (int i = n - 1; i >= 0; i--) {
 
-            /*Pour chaque élément du tableau on ajoute un nombre d'espace si nécessaire
+            /*Pour chaque élément du tableau on ajoute un nombre d'espace (si nécessaire)
             de façon à ce que chaque disque soit centré*/
             // On ajoute +1 au diametre max pour le symbole représentant le centre de la tour.
             resultat += ajouterEspaceDepart(diametreMax(d)+1,d[i].diametre());
@@ -53,9 +55,11 @@ public class AffichageJoliePerso implements Affichage{
                 if(j == d[i].diametre()){
                     resultat += "|" + motif;
                 }else {
+                    //Sinon on ajoute le motif représentant le disque
                     resultat += motif;
                 }
             }
+            //Pour finir de dessiner le disque on passe à la ligne
             resultat += "\n";
 
         }
@@ -89,6 +93,7 @@ public class AffichageJoliePerso implements Affichage{
      */
     private String ajouterBase(int diametreMax){
         String resultat = "###";
+
         for(int i = 0; i < diametreMax * 2;i++){
             resultat += "#";
         }

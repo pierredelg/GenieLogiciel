@@ -27,7 +27,7 @@ public class PileHanoi implements Pile<Disque> {
     private Affichage algoAffichage = new AffichageSimple();
 
     /**
-     * Nombre de déplacements expérimentals.
+     * Nombre de déplacements calculé de façon expérimentale.
      */
     private static int nombreDeDeplacementExperimental = 0;
 
