@@ -208,7 +208,7 @@ public class PileHanoi implements Pile<Disque> {
             //On affiche le déplacement du disque
             System.out.println("On déplace le disque " + numeroDeDisque + " de " + getNom() + " vers " + destHanoi.getNom());
 
-            //On déplace le disque de la pile d'origine restant vers la pile de destination
+            //On déplace le disque restant de la pile d'origine vers la pile de destination
             deplacerUnElementVers(destHanoi);
 
             //On appel la méthode pour déplacer les n-1 disques de la pile intermédiaire vers la pile de destination
