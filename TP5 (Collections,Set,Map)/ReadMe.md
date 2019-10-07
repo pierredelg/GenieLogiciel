@@ -11,8 +11,8 @@ Q1.
 <br>
 Écrivez un programme qui lit une phrase au clavier et affiche un mot sur deux en majuscules et un sur deux en minuscules (utilisez StringTokenizer). Exemple:
 
-] Entrez une phrase : Voici une bien belle phrase
-] VOICI une BIEN belle PHRASE
+> Entrez une phrase : Voici une bien belle phrase
+> VOICI une BIEN belle PHRASE
 
 Rappel : majuscule et minuscule se disent respectivement uppercase et lowercase en anglais.<br>
 
@@ -21,33 +21,33 @@ Q2.
 <br>
 Écrivez un programme qui lit une phrase au clavier, stocke chacun des mots dans une ArrayList, trie cette liste dans l’ordre lexicographique (du code ASCII) et affiche son contenu. Vous pourrez utiliser la méthode statique sort de la classe java.util.Collections pour trier (attention, ne pas confondre la classe Collections et l’interface Collection!). Exemple:
 
-] Entrez une phrase : Voici une bien belle phrase
-] Voici belle bien phrase une
+> Entrez une phrase : Voici une bien belle phrase
+> Voici belle bien phrase une
 
 ### Exercice 3: Renversements
 Q3.
 <br>
 Écrivez un programme qui lit une phrase au clavier et affiche ses lettres en majuscules, en ne gardant que les caractères qui sont des lettres. Vous stockerez les caractères d’abord dans l’ordre (avec ArrayList), puis dans l’ordre inverse (avec Stack). Exemple :<br>
 
-] Entrez une phrase : Voici une bien belle phrase
-] VOICIUNEBIENBELLEPHRASE
-] ESARHPELLEBNEIBENUICIOV
+> Entrez une phrase : Voici une bien belle phrase
+> VOICIUNEBIENBELLEPHRASE
+> ESARHPELLEBNEIBENUICIOV
 
 Écrivez ensuite un programme qui dit si une phrase est un palindrome (un palindrome est une phrase qui se lit de gauche à droite ou de droite à gauche indifféremment, par exemple : Esope reste ici et se repose).<br>
 Q4.
 <br>
 Écrivez un programme qui lit une phrase au clavier et affiche ses mots en ordre inverse (avec Stack). Exemple:<br>
 <br>
-] Entrez une phrase : Voici une bien belle phrase
-] phrase belle bien une Voici
+> Entrez une phrase : Voici une bien belle phrase
+> phrase belle bien une Voici
 <br>
 Q5.
 <br>
 Écrivez un programme qui lit une phrase au clavier et affiche ses mots dans l’ordre, en inversant les lettres de chaque mot.<br>
 Exemple:<br>
 
-] Entrez une phrase : Voici une bien belle phrase
-] icioV enu neib elleb esarhp
+> Entrez une phrase : Voici une bien belle phrase
+> icioV enu neib elleb esarhp
 
 ### Exercice 4: Recensements
 Q6.
@@ -55,8 +55,8 @@ Q6.
 Écrivez un programme qui lit une chaîne et affiche la liste des caractères qui sont présents dans cette chaîne. Utilisez pour cela uniquement la classe BitSet. Exemple:<br>
 <br>
 
-] Entrez une phrase : Voici une bien belle phrase.<br>
-] . V a b c e h i l n o p r s u<br>
+> Entrez une phrase : Voici une bien belle phrase.<br>
+> . V a b c e h i l n o p r s u<br>
 
 <br>
 Q7.
@@ -103,13 +103,13 @@ Résultat:
 
 Parcours numero 1
 
-] 5
-] 4
-] Je l’efface !
-] hello
-] Parcours numero 2
-] 5
-] hello
+> 5
+> 4
+> Je l’efface !
+> hello
+> Parcours numero 2
+> 5
+> hello
 
 Q11.
 <br>
@@ -142,19 +142,19 @@ Résultat:<br>
 <br>
 Parcours numero 1<br>
 
-] 2
-] 3
-] 5
-] 8
-] Je l’efface !
-] 13
+> 2
+> 3
+> 5
+> 8
+> Je l’efface !
+> 13
 
 Parcours numero 2
 
-] 2
-] 3
-] 5
-] 13
+> 2
+> 3
+> 5
+> 13
 
 Auteur: Sébastien Picault
 
