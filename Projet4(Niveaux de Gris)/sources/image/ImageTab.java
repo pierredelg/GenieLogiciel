@@ -30,7 +30,7 @@ public class ImageTab implements ImageGrise {
     @Override
     public NiveauGris pointEn(int x, int y) {
 
-        if (x >= 0 && x < niveauGris.length && y >= 0 && y < niveauGris.length) {
+        if (x >= 0 && x < largeur() && y >= 0 && y < hauteur()) {
             return niveauGris[x][y];
         }
         return null;
@@ -38,21 +38,21 @@ public class ImageTab implements ImageGrise {
 
     @Override
     public void definirPoint(int x, int y, NiveauGris gris) {
-        if (x >= 0 && x < niveauGris.length && y >= 0 && y < niveauGris.length) {
+        if (x >= 0 && x < largeur() && y >= 0 && y < hauteur()) {
             this.niveauGris[x][y] = gris;
         }
     }
 
     @Override
     public void allumer(int x, int y) {
-        if (x >= 0 && x < niveauGris.length && y >= 0 && y < niveauGris.length) {
+        if (x >= 0 && x < largeur() && y >= 0 && y < hauteur()) {
             niveauGris[x][y] = NiveauGris.NOIR;
         }
     }
 
     @Override
     public void eteindre(int x, int y) {
-        if (x >= 0 && x < niveauGris.length && y >= 0 && y < niveauGris.length) {
+        if (x >= 0 && x < largeur() && y >= 0 && y < hauteur()) {
             niveauGris[x][y] = NiveauGris.BLANC;
         }
     }
@@ -198,16 +198,19 @@ public class ImageTab implements ImageGrise {
     @Override
     public NiveauGris niveauMoyen() {
 
-        int nbPoint = largeur() * hauteur();
-        int nbBlanc = compterPoints(NiveauGris.BLANC);
-        int nbClair = compterPoints(NiveauGris.GRIS_CLAIR);
-        int nbMoyen = compterPoints(NiveauGris.GRIS_MOYEN);
-        int nbFonce = compterPoints(NiveauGris.GRIS_FONCE);
-        int nbNoir = compterPoints(NiveauGris.NOIR);
+        int nbPoints = largeur() * hauteur();
+        int nbPointsClairs = compterPoints(NiveauGris.GRIS_CLAIR);
+        int nbPointsMoyens = compterPoints(NiveauGris.GRIS_MOYEN);
+        int nbPointsFonces = compterPoints(NiveauGris.GRIS_FONCE);
+        int nbPointsNoirs = compterPoints(NiveauGris.NOIR);
 
-        double moyennePoints = ((nbBlanc*0) + (nbClair*1) + (nbMoyen*2) + (nbFonce*3) + (nbNoir*4))/nbPoint;
+        int moyennePoints = 0;
 
-        return NiveauGris.deNiveau((int)moyennePoints);
+        if(nbPoints != 0) {
+            moyennePoints = (nbPointsClairs + (nbPointsMoyens * 2) + (nbPointsFonces * 3) + (nbPointsNoirs * 4)) /  nbPoints;
+        }
+
+        return NiveauGris.deNiveau(moyennePoints);
 
     }
 
@@ -230,7 +233,6 @@ public class ImageTab implements ImageGrise {
                 }
             }
         }
-
         return imageGrise;
     }
 }

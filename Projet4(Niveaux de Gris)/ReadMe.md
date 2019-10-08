@@ -75,13 +75,15 @@ public interface ImageGrise {
   
 Récupérez le fichier pr4.tgz et décompressez-le. Vous y trouverez les éléments suivants:  
   
-    dans sources:
-        un package image qui contient les sources de l’interface ImageGrise et de la classe NiveauGris;
-        un package dictionnaire.correction qui donne le corrigé des classes TabDict et CoupleObj du TP 4;
-        une classe Catalogue qui calcule quelques images simples.
-        dans classes : le bytecode d’un Afficheur (utilisé par Catalogue) permettant de visualiser les images dans une fenêtre graphique, dans un fichier affichage.jar;
-        le bytecode d’un programme image.Viewer qui permet une manipulation d’images avancée (également dans affichage.jar)
-        dans doc : la documentation des fichiers fournis.
+1. Dans sources:  
+ * un package image qui contient les sources de l’interface ImageGrise et de la classe NiveauGris;
+ * un package dictionnaire.correction qui donne le corrigé des classes TabDict et CoupleObj du TP 4;
+ * une classe Catalogue qui calcule quelques images simples.
+2. Dans classes : 
+* le bytecode d’un Afficheur (utilisé par Catalogue) permettant de visualiser les images dans une fenêtre graphique, dans un fichier affichage.jar;
+* le bytecode d’un programme image.Viewer qui permet une manipulation d’images avancée (également dans affichage.jar)
+3. Dans doc : 
+* la documentation des fichiers fournis.
   
 ## Réalisation au moyen d’un tableau de niveaux de gris  
   
