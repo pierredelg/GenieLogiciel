@@ -235,4 +235,20 @@ public class ImageTab implements ImageGrise {
         }
         return imageGrise;
     }
+
+    @Override
+    public ImageGrise optimiser() {
+        double nbDeBlancs = compterPoints(NiveauGris.BLANC);
+        double nbDePoints = largeur() * hauteur();
+        double proportion = nbDeBlancs/nbDePoints;
+        if(proportion > 0.1){
+             ImageDict imageDict = new ImageDict(largeur(),hauteur());
+             for(int i = 0;i < largeur();i++){
+                 for(int j = 0; j < hauteur();j++){
+                     imageDict.definirPoint(i,j,this.pointEn(i,j));
+                 }
+             }
+        }
+        return this;
+    }
 }
