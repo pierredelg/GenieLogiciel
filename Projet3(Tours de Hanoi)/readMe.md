@@ -129,7 +129,7 @@ Placez le fichier affichage.jar dans votre propre répertoire classes et créez 
 
 Faites de même avec AffichageGraphique (consultez la documentation fournie d’abord!).  
   
-##Questions subsidiaires  
+## Questions subsidiaires  
 
 ### Q11.
 

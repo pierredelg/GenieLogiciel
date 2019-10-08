@@ -1,7 +1,7 @@
 
 # Les arbres binaires: le jeu des questions  
   
-# Projet 2 / GL / LP DA2I / semestre 1  
+## Projet 2 / GL / LP DA2I / semestre 1  
   
 ## Arbres binaires: rappels  
   
