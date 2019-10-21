@@ -54,4 +54,12 @@ public interface ImageGrise {
      * niveau de gris moyen de l'image, et assombrir (respectivement eclaircir) les points 
      * plus sombres (resp. plus clairs) que ce niveau moyen */
     ImageGrise augmenterContraste() ;
+
+    /**
+     * Cette méthode permet d'optimiser l’utilisation de la mémoire,
+     * en convertissant une image implémentée par tableau en une image identique implémentée par dictionnaire,
+     * ou vice-versa selon la proportion de points blancs dans l’image.
+     * @return une instance de ImageTab ou une instance de ImageDict selon le contenu de l'image.
+     */
+    ImageGrise optimiser();
 }
