@@ -5,6 +5,7 @@ package image;
  * contenant un niveau de gris dans chaques cases.
  * La premiere dimension représente la largeur de l'image.
  * La deuxieme dimension représente la hauteur de l'image.
+ * @author DELGRANGE Pierre
  */
 public class ImageTab implements ImageGrise {
 

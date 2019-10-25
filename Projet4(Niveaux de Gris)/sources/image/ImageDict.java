@@ -25,6 +25,7 @@ import dictionnaire.correction.TabDict;
 /**
  * Classe représentant une image en niveaux de gris avec un Dictionnaire
  * contenant les coordonnées de chaque pixel associées à un niveau de gris.
+ * @author DELGRANGE Pierre
  */
 public class ImageDict implements ImageGrise {
 
@@ -100,8 +101,7 @@ public class ImageDict implements ImageGrise {
     @Override
     public void definirPoint(int x, int y, NiveauGris gris) {
         CoupleObj <Integer,Integer> coupleObj = new CoupleObj<>(x, y);
-        NiveauGris niveauGris = dictionnaire.valeurPour(coupleObj);
-        if(gris.estBlanc() && niveauGris != null){
+        if(gris.estBlanc()){
             dictionnaire.enleverPour(coupleObj);
         }else {
             if (x >= 0 && x < largeur && y >= 0 && y < hauteur) {
@@ -161,9 +161,9 @@ public class ImageDict implements ImageGrise {
         for(int i = 0; i < largeur; i++){
             for (int j = 0; j < hauteur;j++){
                 NiveauGris niveauGris = dictionnaire.valeurPour(new CoupleObj<>(i,j));
-               if((niveauGris != null && gris.code() == niveauGris.code()) || (gris.estBlanc() && niveauGris == null)){
-                   nombre++;
-               }
+                if((niveauGris != null && gris.code() == niveauGris.code()) || (gris.estBlanc() && niveauGris == null)){
+                    nombre++;
+                }
             }
         }
         return nombre;
@@ -222,14 +222,12 @@ public class ImageDict implements ImageGrise {
                 NiveauGris niveauGris = dictionnaire.valeurPour(new CoupleObj<>(i,j));
                 if(niveauGris != null && !niveauGris.estNoir()) {
                     imageGrise.definirPoint(i, j, niveauGris.assombrir());
-
                 }
                 if (niveauGris == null){
                     imageGrise.definirPoint(i, j,NiveauGris.GRIS_CLAIR);
                 }
             }
         }
-
         return imageGrise;
     }
 
@@ -293,6 +291,7 @@ public class ImageDict implements ImageGrise {
                     if(niveauGris != null) {
                         imageGrise.definirPoint(i, j, niveauGris.soustraire(img.pointEn(i, j)));
                     }
+                    //Sinon pas besoin de soustraire car soustraire au blanc donne du blanc
                 }
             }
         }
