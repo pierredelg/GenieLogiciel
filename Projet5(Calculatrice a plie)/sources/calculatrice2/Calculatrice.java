@@ -1,4 +1,5 @@
-package calculatrice;
+package calculatrice2;
+
 
 import java.util.HashMap;
 import java.util.Stack;
@@ -12,7 +13,7 @@ public class Calculatrice {
 
     private Stack<Double> resultat;
 
-    private HashMap<String,Operation> operations;
+    private HashMap<String, Operation> operations;
 
     /**
      * Constructeur de la calculatrice fonctionnant avec une Stack et une HashMap
@@ -20,7 +21,7 @@ public class Calculatrice {
     public Calculatrice() {
         this.resultat = new Stack<>();
         this.operations = new HashMap<>();
-        for(Operation o :Operation.values()){
+        for(Operation o : Operation.values()){
             operations.put(o.toString(),o);
         }
     }
@@ -29,9 +30,9 @@ public class Calculatrice {
      * Méthode permettant de calculer à partir d'une chaine de caractère en parametre avec des operateurs et des operandes postfixée.
      * @param s - chaine de caractère avec des operateurs et des operandes postfixée
      * @return - Le résultat du calcul ou 0 si erreur dans la chaine envoyée.
-     * @throws CalculatriceException
+     * @throws calculatrice.CalculatriceException
      */
-    public double calculer(String s) throws CalculatriceException{
+    public double calculer(String s) throws CalculatriceException {
         //On divise la chaine de caractere en parametre en token
         StringTokenizer st = new StringTokenizer(s);
         //On parcourt les tokens
@@ -45,9 +46,10 @@ public class Calculatrice {
                     //On dépile les deux dernieres opérandes
                     double a = resultat.pop();
                     double b = resultat.pop();
+                    double [] tab = {a,b};
                     Operation o = operations.get(token);
                     //On fait le calcul
-                    double resultatOp = o.eval(a,b);
+                    double resultatOp = o.eval(tab);
                     //On empile le résultat
                     resultat.push(resultatOp);
                 }
