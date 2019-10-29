@@ -1,7 +1,7 @@
 package calculatrice2;
 
 public enum Operation {
-    PLUS("+"), MOINS("-"), FOIS("*"), DIV("/"),PUISS("^");
+    PLUS("+"), MOINS("-"), FOIS("*"), DIV("/"),PUISS("^"),ABS("ABS"),SQRT("V"),NOT("NOT"),IF("IF");
 
     private final String code_operation;
 
@@ -17,6 +17,25 @@ public enum Operation {
     public double eval(double [] operandes){
 
         if(operandes.length == 1){
+            if (this.code_operation.equals(Operation.NOT.code_operation)) {
+                if(operandes[0] == 0){
+                    return 1;
+                }
+                else{
+                    return 0;
+                }
+            }
+            if (this.code_operation.equals(Operation.ABS.code_operation)) {
+                if(operandes[0] < 0){
+                    return - operandes[0];
+
+                }else{
+                    return operandes[0];
+                }
+            }
+            if (this.code_operation.equals(Operation.SQRT.code_operation)) {
+                return Math.sqrt(operandes[0]);
+            }
             return operandes[0];
         }
 

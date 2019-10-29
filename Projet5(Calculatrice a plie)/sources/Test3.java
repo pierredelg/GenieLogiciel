@@ -1,0 +1,48 @@
+import calculatrice3.CalculatriceException;
+import calculatrice3.Operation;
+
+public class Test3 {
+    public static void main(String [] args) throws CalculatriceException {
+        if (args.length < 2) 
+            System.err.println("Au moins deux nombres sur la ligne de commande !") ;
+        else {
+            if(args.length == 2) {
+                // deux nombres passés sur la ligne de commande
+                double x = new Double(args[0]);
+                double y = new Double(args[1]);
+                double [] tab = {x,y};
+                // la liste des opérations disponibles
+                for (Operation o : Operation.values()) {
+                    System.out.println(x + " " + o + " " + y + " = " + o.eval(tab));
+                }
+            }
+            if(args.length > 2) {
+                double x = new Double(args[0]);
+                String operateur = args[1];
+                double y = new Double(args[2]);
+                Operation o = null;
+                double [] tab = {x,y};
+                if(operateur.contains(Operation.FOIS.toString())){
+                    o=Operation.FOIS;
+                }
+                if(operateur.contains(Operation.MOINS.toString())){
+                    o=Operation.MOINS;
+                }
+                if(operateur.contains(Operation.PLUS.toString())){
+                    o=Operation.PLUS;
+                }
+                if(operateur.contains(Operation.DIV.toString())){
+                    o=Operation.DIV;
+                }
+                if(operateur.contains(Operation.PUISS.toString())){
+                    o=Operation.PUISS;
+                }
+                if(o != null) {
+                    System.out.println(x + " " + o + " " + y + " = " + o.eval(tab));
+                }else{
+                    System.out.println("Impossible de trouver l'opérateur");
+                }
+            }
+        }
+    }
+}
