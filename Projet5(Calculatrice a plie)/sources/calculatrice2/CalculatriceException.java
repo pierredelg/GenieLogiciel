@@ -5,7 +5,11 @@ package calculatrice2;
  */
 public class CalculatriceException extends Exception{
 
-    public String getMessage() {
-        return null;
+    /**
+     * Constructeur de l'exception calculatrice
+     * @param message - Le message avec l'exception
+     */
+    public CalculatriceException(String message) {
+        super(message);
     }
 }

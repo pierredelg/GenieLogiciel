@@ -2,6 +2,12 @@ package calculatrice3;
 
 import java.util.Stack;
 
+/**
+ * Enumeration représentant une opération.
+ * Avec un nom et un code opération
+ * exemple : PLUS ("+")
+ * @author DELGRANGE Pierre
+ */
 public enum Operation {
 
     PLUS("+"),
@@ -13,30 +19,65 @@ public enum Operation {
     SQRT("V"),
     NOT("NOT"),
     IF("IF"),
-    DROP("DROP"),
-    DUP("DUP"),
-    SWAP("SWAP"),
-    COUNT("COUNT");
+    DROP,
+    DUP,
+    SWAP,
+    COUNT;
 
+    /**
+     * Le code de l'opération
+     * par exemple :  "+" pour l'opération PLUS
+     */
     private final String code_operation;
 
+    /**
+     * L'arité de l'opération, c'est à dire, le nombre d’opérandes exigé pour le calcul.
+     */
     private int arite;
 
+    /**
+     * Constructeur sans parametre.
+     * Construit un ordre dont l'arité est 0.
+     */
     Operation(){
         this.arite = 0;
-        code_operation = "";
+        code_operation = this.name();
     }
 
+    /**
+     * Constructeur qui construit une opération avec un code d'opération.
+     * Et affecte l'arété de cette opération.
+     * @param code - Le code de l'opération.
+     */
     Operation(String code) {
         this.code_operation = code;
-        this.arite = 0;
+
+        if(this.ordinal() <= 4){
+            this.arite = 2;
+        }
+        if(this.ordinal() >= 5 && this.ordinal() <= 7){
+            this.arite = 1;
+        }
+        if(this.ordinal() == 8){
+            this.arite = 3;
+        }
     }
 
+    /**
+     * Méthode permettant l'affichage de l'opération.
+     * @return - L'opération représentée par son code_opération.
+     */
     @Override
     public String toString() {
         return  code_operation;
     }
 
+    /**
+     * Méthode permettant d'exécuter l'ordre ou l'opération demandée.
+     * @param pile - La pile de résultat.
+     * @return - La pile de résultat modifiée.
+     * @throws CalculatriceException
+     */
     public Stack<Double> execute(Stack<Double> pile) throws CalculatriceException {
         if(arite != 0){
 
@@ -46,7 +87,6 @@ public enum Operation {
             if(arite == 1){
                 double[] tab = {pile.pop()};
                 pile.push(eval(tab));
-                this.arite = 0;
             }
             if(arite == 2){
                 double[] tab = new double[2];
@@ -56,7 +96,6 @@ public enum Operation {
                 }
                 tab[1] = pile.pop();
                 pile.push(eval(tab));
-                this.arite = 0;
             }
             if(arite == 3){
                 double[] tab = new double[3];
@@ -72,10 +111,10 @@ public enum Operation {
                 else{
                     pile.push(tab[2]);
                 }
-                this.arite = 0;
             }
         }
         else{
+
             if (this.code_operation.equals(Operation.COUNT.code_operation)) {
                 pile.push((double) pile.size());
             }
@@ -101,6 +140,12 @@ public enum Operation {
         return pile;
     }
 
+    /**
+     * Méthode qui effectuer une opération selon la nature de l’opération.
+     * @param operandes - Un tableau contenant les opérandes de l'opération à effectuée.
+     * @return - Le résultat de l'opération.
+     * @throws CalculatriceException
+     */
     public double eval(double [] operandes) throws CalculatriceException {
 
         if(operandes.length == 1){
@@ -150,9 +195,5 @@ public enum Operation {
             }
         }
         throw new CalculatriceException("Trop d'arguments");
-    }
-
-    public void setArite(int arite) {
-        this.arite = arite;
     }
 }

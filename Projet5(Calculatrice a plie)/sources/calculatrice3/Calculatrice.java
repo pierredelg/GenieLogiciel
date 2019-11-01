@@ -11,8 +11,15 @@ import java.util.StringTokenizer;
  */
 public class Calculatrice {
 
+    /**
+     * La pile de nombres servant à faire le calcul
+     */
     private Stack<Double> pileResultat;
 
+    /**
+     * Dictionnaire permettant de retrouver l’opération
+     * à partir de la chaîne de caractères qui la représente (son code_operation)
+     */
     private HashMap<String, Operation> hashMapOperation;
 
     /**
@@ -27,7 +34,8 @@ public class Calculatrice {
     }
 
     /**
-     * Méthode permettant de calculer à partir d'une chaine de caractère en parametre avec des operateurs et des operandes postfixée.
+     * Méthode permettant de calculer à partir d'une chaine de caractère en parametre
+     * avec des operateurs et des operandes postfixée.
      * @param s - chaine de caractère avec des operateurs et des operandes postfixée
      * @return - Le résultat du calcul ou 0 si erreur dans la chaine envoyée.
      * @throws CalculatriceException
@@ -47,37 +55,24 @@ public class Calculatrice {
 
                 //On vérifie le type d'operateur
                 Operation operateur = hashMapOperation.get(token);
-                if(operateur.ordinal() < 5){
-                    operateur.setArite(2);
-                }
-                if(operateur.ordinal() > 4 && operateur.ordinal() < 8){
-                    operateur.setArite(1);
-                }
-                if(operateur.ordinal() == 8){
-                    operateur.setArite(3);
-                }
 
                 //On fait le calcul
                 operateur.execute(pileResultat);
             }
             else{
                 try {
+                    //On essaye de caster le token qui est normalement un nombre
+                    //Sinon c'est une opération inconnue
                     double nombre = Double.parseDouble(token);
                     pileResultat.push(nombre);
                 }catch (NumberFormatException e){
                     throw new CalculatriceException("opération inconnue");
                 }
+            }
+        }
 
-            }
-        }
         //Lorsqu'il n'y a plus de token le résultat se trouve en haut de la pile
-        if(!pileResultat.empty()) {
-            if(pileResultat.size() > 1){
-                throw new CalculatriceException("nombres en trop dans la pile de calcul");
-            }
-            return pileResultat.pop();
-        }else{
-            return 0;
-        }
+        return pileResultat.pop();
+
     }
 }

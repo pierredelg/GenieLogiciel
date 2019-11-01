@@ -10,8 +10,15 @@ import java.util.StringTokenizer;
  */
 public class Calculatrice {
 
+    /**
+     * La pile de nombres servant à faire le calcul
+     */
     private Stack<Double> resultat;
 
+    /**
+     * Dictionnaire permettant de retrouver l’opération
+     * à partir de la chaîne de caractères qui la représente (son code_operation)
+     */
     private HashMap<String,Operation> operations;
 
     /**
