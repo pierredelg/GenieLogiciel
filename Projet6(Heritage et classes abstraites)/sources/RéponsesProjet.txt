@@ -1,0 +1,25 @@
+
+
+Question 1
+
+La classe doit etre abstraite de façon à redéfinir les méthodes dans chaque instance.
+Aussi, de bloquer l'instanciation de la classe ImageQuelconque car la structure de donnée n'est pas initialisée ici
+mais dans les classes héritant d'ImageQuelconque.
+
+Question 4
+
+Herodote a raison cette méthode permet de créer une seule instance.
+
+Question 5
+
+Une nouvelle instance est créée avec le constructeur qui appelle le constructeur d'animal.
+
+Question 6
+
+Pour bloquer l'instanciation il faut mettre le constructeur en private pour supprimer l'accès
+On peut donc supprimer le constructeur Phenix(String nom) maintenant inutile
+
+Question 8
+
+Oui entre la classe EmployeNormal et EmployeMieuxPaye seul la valeur d'un attribut est différente ce qui crée beaucoup de redondance dans le code
+On peut eviter cette redondance en créant une super classe qui regroupe ces deux classes et en ajoutant un constructeur avec un parametre majoration

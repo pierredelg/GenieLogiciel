@@ -18,16 +18,11 @@ import dictionnaire.TabDict;
  *  @see image.Point
  *  @see TabDict
  */
-public class ImageDoubleDict extends ImageQuelconque {
-        private Dictionnaire points;
+public class ImageDoubleDict extends ImageDictSuper {
 
         public ImageDoubleDict(int w, int h) {
                 super(w,h);
                 this.initialiserPoints();
-        }
-
-        void initialiserPoints() {
-                points = new TabDict();
         }
 
 

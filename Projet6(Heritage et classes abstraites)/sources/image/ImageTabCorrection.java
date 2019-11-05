@@ -1,5 +1,4 @@
-import image.ImageGrise;
-import image.NiveauGris;
+package image;
 
 /** La classe <code>ImageTab</code> représente une image en niveaux
  *  de gris au moyen d'un tableau à deux dimensions de <code>NiveauGris</code>.

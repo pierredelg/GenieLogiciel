@@ -142,7 +142,7 @@ Comment peut-on faire en sorte que EmployeQuelconque possède les méthodes void
 Est-il judicieux que l’attribut temps_travail soit une variable d’instance ? Et les autres ?
 
 ## Le Directeur
-On veut représenter le directeur de l’entreprise. Il fonctionne un peu comme le phénix: il doit être la seule instance de la classe Directeur. On veut accéder à cette instance avec une méthode de classe getDirecteur(). Son salaire hebdomadaire est calculé à partir d’une part fixe et de 0, 4% du chiffre d’affaires total réalisé par les commerciaux.
+On veut représenter le directeur de l’entreprise. Il fonctionne un peu comme le phénix: il doit être la seule instance de la classe Directeur. On veut accéder à cette instance avec une méthode de classe getDirecteur(). Son employesSansHeritage hebdomadaire est calculé à partir d’une part fixe et de 0, 4% du chiffre d’affaires total réalisé par les commerciaux.
 
 ### Q12.
 De quelle classe peut-on faire dériver Directeur ?

@@ -14,18 +14,11 @@ import dictionnaire.TabDict;
  *  @see image.Point
  *  @see TabDict
  */
-public class ImageDict extends ImageQuelconque {
-
-        private Dictionnaire points;
+public class ImageDict extends ImageDictSuper {
 
         public ImageDict(int w, int h) {
                super(w,h);
                this.initialiserPoints();
-        }
-
-
-        private void initialiserPoints() {
-                points = new TabDict();
         }
 
         public NiveauGris pointEn(int x, int y) {

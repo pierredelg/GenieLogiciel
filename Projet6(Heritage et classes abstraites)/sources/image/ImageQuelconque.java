@@ -1,9 +1,5 @@
 package image;
 
-//Réponses question 1 : La classe doit etre abstraite de façon à redéfinir les méthodes dans chaque instance.
-// Aussi, de bloquer l'instanciation de la classe ImageQuelconque car la structure de donnée n'est pas initialisée ici
-// mais dans les classes héritant d'ImageQuelconque.
-
 /**
  * Classe abstraite représentant une image quelconque.
  * @author DELGRANGE Pierre
@@ -32,9 +28,14 @@ public abstract class ImageQuelconque implements ImageGrise{
     private ImageQuelconque newInstance(){
         if(this instanceof ImageTab) {
             return  new ImageTab(largeur, hauteur);
-        }else{
+        }
+        if(this instanceof ImageDict) {
             return new ImageDict(largeur, hauteur);
         }
+        if(this instanceof ImageDoubleDict){
+            return new ImageDoubleDict(largeur,hauteur);
+        }
+        return null;
     }
 
     @Override
@@ -114,10 +115,10 @@ public abstract class ImageQuelconque implements ImageGrise{
         return result;
     }
     @Override
-    public ImageGrise ajouter(ImageGrise img) {
+    public ImageGrise ajouter(ImageGrise img) throws ImagesIncompatiblesException {
         ImageGrise result= newInstance();
         if (this.incompatible(img))
-            return result;
+            throw new ImagesIncompatiblesException("Image incompatible");
         for (int y=0; y<hauteur; y++)
             for (int x=0; x<largeur; x++)
                 result.definirPoint(x, y,
@@ -125,11 +126,11 @@ public abstract class ImageQuelconque implements ImageGrise{
         return result;
     }
     @Override
-    public ImageGrise soustraire(ImageGrise img) {
+    public ImageGrise soustraire(ImageGrise img) throws ImagesIncompatiblesException {
         ImageGrise result= newInstance();
 
         if (this.incompatible(img))
-            return result;
+            throw new ImagesIncompatiblesException("Image incompatible");
         for (int y=0; y<hauteur; y++)
             for (int x=0; x<largeur; x++)
                 result.definirPoint(x, y,
@@ -137,10 +138,10 @@ public abstract class ImageQuelconque implements ImageGrise{
         return result;
     }
     @Override
-    public ImageGrise XOR(ImageGrise img) {
+    public ImageGrise XOR(ImageGrise img) throws ImagesIncompatiblesException {
         ImageGrise result= newInstance();
         if (this.incompatible(img))
-            return result;
+            throw new ImagesIncompatiblesException("Image incompatible");
         for (int y=0; y<hauteur; y++)
             for (int x=0; x<largeur; x++)
                 result.definirPoint(x, y,
@@ -148,11 +149,11 @@ public abstract class ImageQuelconque implements ImageGrise{
         return result;
     }
     @Override
-    public ImageGrise intersection(ImageGrise img) {
+    public ImageGrise intersection(ImageGrise img) throws ImagesIncompatiblesException {
         ImageGrise result= newInstance();
         if (this.incompatible(img))
-            return result;
-        for (int y=0; y<hauteur; y++)
+            throw new ImagesIncompatiblesException("Image incompatible");
+    for (int y=0; y<hauteur; y++)
             for (int x=0; x<largeur; x++)
                 if (this.pointEn(x,y).equals(img.pointEn(x,y)))
                     result.definirPoint(x, y, this.pointEn(x,y));

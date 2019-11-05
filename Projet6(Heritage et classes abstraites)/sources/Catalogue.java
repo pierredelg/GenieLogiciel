@@ -8,7 +8,7 @@ public class Catalogue
 {
 public static ImageGrise fasce()
 {
-        ImageGrise img = new ImageDict(21,21);
+        ImageGrise img = new ImageDoubleDict(21,21);
         for (int x=0; x<21; x++)
                 for (int i=-2; i<=2; i++)
                         img.allumer(x, 10+i);
@@ -17,7 +17,7 @@ public static ImageGrise fasce()
 
 public static ImageGrise pal()
 {
-        ImageGrise img = new ImageDict(21,21);
+        ImageGrise img = new ImageDoubleDict(21,21);
         for (int y=0; y<21; y++)
                 for (int i=-2; i<=2; i++)
                         img.allumer(10+i, y);
@@ -26,7 +26,7 @@ public static ImageGrise pal()
 
 public static ImageGrise bande()
 {
-        ImageGrise img = new ImageDict(21,21);
+        ImageGrise img = new ImageDoubleDict(21,21);
         for (int x=0; x<21; x++)
                 for (int i=-2; i<=2; i++)
                         img.allumer(Math.max(0,Math.min(20,x+i)), x);
@@ -35,7 +35,7 @@ public static ImageGrise bande()
 
 public static ImageGrise barre()
 {
-        ImageGrise img = new ImageDict(21,21);
+        ImageGrise img = new ImageDoubleDict(21,21);
         for (int x=0; x<21; x++)
                 for (int i=-2; i<=2; i++)
                         img.allumer(Math.max(0,Math.min(20,20-(x+i))), x);
@@ -44,7 +44,7 @@ public static ImageGrise barre()
 
 public static ImageGrise ellipse1(int kx, int ky)
 {
-        ImageGrise img = new ImageDict(200,200);
+        ImageGrise img = new ImageDoubleDict(200,200);
         NiveauGris gris;
         int x, y;
         for (double angle=0; angle<2*Math.PI; angle+=0.01)
@@ -59,7 +59,7 @@ public static ImageGrise ellipse1(int kx, int ky)
 
 public static ImageGrise ellipse2(int phi)
 {
-        ImageGrise img = new ImageDict(200,200);
+        ImageGrise img = new ImageDoubleDict(200,200);
         NiveauGris gris;
         int x, y;
         for (double angle=0; angle<2*Math.PI; angle+=0.01)
@@ -74,9 +74,18 @@ public static ImageGrise ellipse2(int phi)
 
 public static void main(String [] arg)
 {
-        ImageGrise img = fasce().ajouter(barre().eclaircir().inverser());
+        ImageGrise img = null;
+        try {
+                img = fasce().ajouter(barre().eclaircir().inverser());
+        } catch (ImagesIncompatiblesException e) {
+                System.out.println(e.getMessage());
+        }
         System.out.println(img);
         Afficheur.afficher(img,20);
-        Afficheur.afficher(ellipse1(1,2).ajouter(ellipse2(-30)), 2);
+        try {
+                Afficheur.afficher(ellipse1(1,2).ajouter(ellipse2(-30)), 2);
+        } catch (ImagesIncompatiblesException e) {
+                System.out.println(e.getMessage());
+        }
 }
 }
