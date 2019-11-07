@@ -1,26 +1,25 @@
 package employesAvecHeritage;
 
-public class Commercial {
+/**
+ * Classe représentant un commercial.
+ * @author DELGRANGE Pierre
+ */
+public class Commercial extends EmployeQuelconque{
 
-    private double ca , salaireFixe;
-
-    private String nom;
-
+    /**
+     * Constructeur d'un commercial.
+     * @param nom - le nom du commercial.
+     */
     public Commercial(String nom) {
-        this.salaireFixe = 1500;
-        this.nom = nom;
+        super(nom);
     }
 
-    public double salaireHebdo() {
-        return salaireFixe + ca/100;
-    }
-
-    public void setTravail(double x) {
-        this.ca = x;
-    }
-
-    @Override
-    public String toString() {
-        return nom;
+    /**
+     * Méthode permettant de mettre à jour le chiffre d'affaire éffectué par un commercial.
+     * @param chiffreAffaire - le chiffre d'affaire effectué par le commercial.
+     */
+    public void setTravail(double chiffreAffaire){
+        caTotal += chiffreAffaire;
+        super.setTravail(chiffreAffaire);
     }
 }

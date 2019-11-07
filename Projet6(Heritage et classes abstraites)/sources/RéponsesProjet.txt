@@ -1,25 +1,68 @@
 
+                        HERITAGE ET REUTILISATION DE CODE:  UN CAS CONCRET
 
-Question 1
+Question 1 :
 
 La classe doit etre abstraite de façon à redéfinir les méthodes dans chaque instance.
 Aussi, de bloquer l'instanciation de la classe ImageQuelconque car la structure de donnée n'est pas initialisée ici
 mais dans les classes héritant d'ImageQuelconque.
 
-Question 4
+
+
+                                    LE CAS ETRANGE DU PHENIX
+
+
+Question 4 :
 
 Herodote a raison cette méthode permet de créer une seule instance.
 
-Question 5
+Question 5 :
 
 Une nouvelle instance est créée avec le constructeur qui appelle le constructeur d'animal.
 
-Question 6
+Question 6 :
 
 Pour bloquer l'instanciation il faut mettre le constructeur en private pour supprimer l'accès
 On peut donc supprimer le constructeur Phenix(String nom) maintenant inutile
 
-Question 8
+
+
+                                                GESTION DE SALAIRES
+
+RESOLUTION DU PROBLEME SANS HERITAGE
+
+Question 8 :
 
 Oui entre la classe EmployeNormal et EmployeMieuxPaye seul la valeur d'un attribut est différente ce qui crée beaucoup de redondance dans le code
 On peut eviter cette redondance en créant une super classe qui regroupe ces deux classes et en ajoutant un constructeur avec un parametre majoration
+
+
+
+
+INTRODUCTION DE L'HERITAGE
+
+Question 13 :
+
+Oui cela est possible en ajoutant les attributs des classes Commercial et EmployeAvecHSup dans la classe EmployeQuelconque
+Et dans chaque methode execute un code differend selon l'instance créée.
+
+Question 14 :
+
+Si on n'ajoute pas de setter pour l'attribut temps_travail il n'est pas judicieux de le mettre en variable d'instance,
+on peut soit mettre directement la valeur dans la méthode salaireHebdo() sinon on peut aussi le transformer
+en variable de classe (constante) afin de maintenir le programme plus facilement si jamais cette valeur change.
+
+Pour le salaireFixe on peut appliquer les mêmes changements.
+
+En ce qui concerne les autres variables d'instances, elles sont modifiées suivant l'instance créée donc elles sont judicieuse.
+
+
+
+                                                    LE DIRECTEUR
+
+Question 12 :
+
+On peut faire hériter Directeur de la classe EmployeQuelconque.
+
+Question 13 :
+

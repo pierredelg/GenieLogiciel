@@ -1,5 +1,4 @@
 import image.*;
-import image.Afficheur;
 
 /** Catalogue d'images en niveaux de gris (generees par des methodes statiques) :
  * quelques pieces honorables heraldiques (en noir et blanc) ainsi que des images
