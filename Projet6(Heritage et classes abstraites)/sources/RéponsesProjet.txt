@@ -66,3 +66,4 @@ On peut faire hériter Directeur de la classe EmployeQuelconque.
 
 Question 13 :
 
+On peut utiliser instanceof afin de comparer le type de l'instance courante
